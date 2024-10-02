@@ -56,7 +56,7 @@ function LandingPage() {
             <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent w-full h-full">
                 <NavBar className="relative z-40" />
                 <div
-                    className={`text-white w-[38%] px-32 py-24 transition-opacity duration-500 ${
+                    className={`text-white w-[38%] px-32 py-48 transition-opacity duration-500 ${
                         isVisible ? "opacity-100" : "opacity-0"
                     }`}
                 >
