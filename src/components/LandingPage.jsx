@@ -1,4 +1,4 @@
-import background1 from '../assets/background1.jpg';
+import background1 from '../assets/avatar.png';
 import background2 from '../assets/background2.jpeg';
 import background3 from '../assets/background3.jpeg';
 import NavBar from "./NavBar.jsx";
@@ -8,7 +8,7 @@ const cards = [
     {
         id: 1,
         background: background1,
-        title: "Spider Man No Way Home",
+        title: "Avatar: The Way of Water",
         duration: "180 mins",
     },
     {
