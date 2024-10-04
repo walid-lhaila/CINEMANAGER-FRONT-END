@@ -5,6 +5,8 @@ import SignIn from "./components/Auth/SignIn.jsx";
 import SignUp from "./components/Auth/SignUp.jsx";
 import ForgetPassword from "./components/Auth/ForgetPassword.jsx";
 import Home from "./components/Home/Home.jsx";
+import MovieDetails from "./components/Details/MovieDetails.jsx";
+import Reservation from "./components/Reservations/Reservation.jsx";
 function App() {
 
   return (
@@ -14,6 +16,8 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/ForgetPassword" element={<ForgetPassword />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/movieDetails" element={<MovieDetails />} />
+          <Route path="/reservation" element={<Reservation />} />
       </Routes>
   );
 }
