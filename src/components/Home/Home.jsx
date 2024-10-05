@@ -5,23 +5,12 @@ import LatestCard from "./LatestCard.jsx";
 import MovieCard from "./MovieCard.jsx";
 import Footer from "../Footer.jsx";
 import SectionTitle from "./SectionTitle.jsx";
-import img1 from "../../assets/flash.png";
-import img2 from "../../assets/fubar.png";
-import img3 from "../../assets/manifest.png";
-import img4 from "../../assets/silo.png";
-import img5 from "../../assets/fastx.png";
-import img6 from "../../assets/medelin.png";
-import img7 from "../../assets/Theblack.png";
-import img8 from "../../assets/ghosted.png";;
-import img9 from "../../assets/jhonwik.png";
-import img10 from "../../assets/nightagent.png";
-import img11 from "../../assets/hypnotic.png";
-import img12 from "../../assets/blackNight.png";;
-import img13 from "../../assets/bookClub.png";
-import img14 from "../../assets/from.png";
-import img15 from "../../assets/sisu.png";
+import getSession from "../Hooks/Session/GetSession.jsx";
+import img from "../../assets/jhonwik.png";
+
 
 function Home() {
+    const {sessions, error} = getSession();
     return (
         <>
             <NavBar/>
@@ -95,7 +84,7 @@ function Home() {
                 <div className="flex justify-center items-center gap-8 py-8">
 
                     <div className="flex gap-4 justify-center items-center w-[30%] h-[110px] ">
-                        <img className="w-[28%] h-[100%]" src={img1} alt=""/>
+                        <img className="w-[28%] h-[100%]" src={img} alt=""/>
                         <div>
                             <h1 className='text-white font-medium font-serif text-md'>The Flash</h1>
                             <p className="text-white">Movie / Room : 8</p>
@@ -104,7 +93,7 @@ function Home() {
                     </div>
 
                     <div className="flex gap-4 justify-center items-center w-[30%] h-[110px] ">
-                        <img className="w-[28%] h-[100%]" src={img2} alt=""/>
+                        <img className="w-[28%] h-[100%]" src={img} alt=""/>
                         <div>
                             <h1 className='text-white font-medium font-serif text-md'>The Flash</h1>
                             <p className="text-white">Movie / Room : 8</p>
@@ -113,7 +102,7 @@ function Home() {
                     </div>
 
                     <div className="flex gap-4 justify-center items-center w-[30%] h-[110px] ">
-                        <img className="w-[28%] h-[100%]" src={img3} alt=""/>
+                        <img className="w-[28%] h-[100%]" src={img} alt=""/>
                         <div>
                             <h1 className='text-white font-medium font-serif text-md'>The Flash</h1>
                             <p className="text-white">Movie / Room : 8</p>
@@ -122,7 +111,7 @@ function Home() {
                     </div>
 
                     <div className="flex gap-4 justify-center items-center w-[30%] h-[110px] ">
-                        <img className="w-[28%] h-[100%]" src={img4} alt=""/>
+                        <img className="w-[28%] h-[100%]" src={img} alt=""/>
                         <div>
                             <h1 className='text-white font-medium font-serif text-md'>The Flash</h1>
                             <p className="text-white">Movie / Room : 8</p>
@@ -136,9 +125,9 @@ function Home() {
 
                 <div className="flex justify-center items-center gap-8 py-2">
 
-                    <LatestCard imgSrc={img6} title="Medellin" time="3:12:00" price="69"/>
-                    <LatestCard imgSrc={img5} title="Fast X" time="3:12:00" price="99"/>
-                    <LatestCard imgSrc={img7} title="The Black..." time="3:12:00" price="109"/>
+                    <LatestCard imgSrc={img} title="Medellin" time="3:12:00" price="69"/>
+                    <LatestCard imgSrc={img} title="Fast X" time="3:12:00" price="99"/>
+                    <LatestCard imgSrc={img} title="The Black..." time="3:12:00" price="109"/>
 
                 </div>
 
@@ -146,14 +135,9 @@ function Home() {
 
                 <div className="flex flex-wrap justify-center items-center gap-10 py-2">
 
-                    <MovieCard img={img8} title="Ghosted" />
-                    <MovieCard img={img9} title="John Wick: Ch..." />
-                    <MovieCard img={img10} title="The Night Agent" />
-                    <MovieCard img={img11} title="Hypnotic" />
-                    <MovieCard img={img12} title="Black Night" />
-                    <MovieCard img={img13} title="Book Club" />
-                    <MovieCard img={img14} title="From" />
-                    <MovieCard img={img15} title="Sisu" />
+                    {sessions.map((session) => (
+                        <MovieCard key={session._id} img={img} title={session.movieId.title} />
+                    ))}
 
                 </div>
 

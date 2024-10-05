@@ -3,7 +3,9 @@ import backgroundImg from '../../assets/bgLogin.jpeg'
 import {Link} from "react-router-dom";
 import Input from "./AuthInput.jsx"
 import Button from "./AuthBtn.jsx";
+import useSignIn from "../Hooks/Auth/UseSignIn.jsx";
 function SignIn() {
+    const { formData, handleSubmit, error, handleChange } = useSignIn();
     return (
         <>
             <div className="relative h-screen bg-cover bg-center" style={{ backgroundImage: `url(${backgroundImg}`}}>
@@ -13,14 +15,15 @@ function SignIn() {
                 </div>
 
                 <div className="bg-black w-[25%] mx-auto shadow-black shadow-xl">
-                    <form className="flex flex-col px-10 py-10">
+                    <form className="flex flex-col px-10 py-10" onSubmit={handleSubmit}>
                         <h1 className="text-white font-bold font-serif text-4xl py-8">Sign In</h1>
-                            <Input name="email" type="email" placeholder="Email Address"/>
+                            <Input name="email" type="email" placeholder="Email Address" value={formData.email} onChange={handleChange}/>
                         <div className="py-5">
-                            <Input name="password" type="password" placeholder="Password"/>
+                            <Input name="password" type="password" placeholder="Password" value={formData.password} onChange={handleChange}/>
                         </div>
                         <div>
                             <Button text="Sign In" type="submit" />
+                            {error && <p className="text-red-500 mt-3">{error}</p>}
                         </div>
                         <p className="text-white font-serif font-medium text-center py-3">OR</p>
                         <Link to="/signup">
