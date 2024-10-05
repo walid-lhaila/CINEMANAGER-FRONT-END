@@ -21,9 +21,23 @@ function SessionDetails({id}) {
         }
     }, [id]);
 
+    const movieTime = (startTime, endTime) => {
+        const start = new Date(startTime);
+        const end = new Date(endTime);
+        const fullTime = end - start;
+
+
+        const hour = Math.floor(fullTime / (1000 * 60 * 60 ));
+        const minutes = Math.floor((fullTime % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((fullTime % (1000 * 60)) / 1000);
+
+        return `${hour}H ${minutes}m ${seconds}s`;
+    };
+
     return {
         session,
-        error
+        error,
+        movieTime,
     };
 }
 
