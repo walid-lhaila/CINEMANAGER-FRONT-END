@@ -5,25 +5,31 @@ import MovieCard from "../Home/MovieCard.jsx";
 import Footer from "../Footer.jsx";
 import jocker from "../../assets/jocker.jpeg";
 import jocker2 from "../../assets/jocker2.jpeg";
-import img10 from "../../assets/nightagent.png";
-import img11 from "../../assets/hypnotic.png";
-import img12 from "../../assets/blackNight.png";
-import img13 from "../../assets/bookClub.png";
-import img14 from "../../assets/from.png";
-import img15 from "../../assets/sisu.png";
-import img8 from "../../assets/ghosted.png";
-import img9 from "../../assets/jhonwik.png";
+import getSession from "../Hooks/Session/GetSession.jsx";
+import sessionDetails from "../Hooks/Session/SessionDetails.jsx";
+import {useParams} from "react-router-dom";
 function MovieDetails() {
+            const {id} = useParams();
+            const { session, error } = sessionDetails({id});
+            const {sessions} = getSession();
+
+            if (error) {
+                return <div>Error fetching session: {error.message}</div>;
+            }
+
+            if (!session) {
+                return <div>Loading...</div>;
+            }
     return (
         <>
             <NavBar />
             <div className="w-[65%] mx-auto pt-14">
                 <img className="w-[80%] h-[600px] mx-auto" src={jocker}/>
                 <div className="flex  gap-10 pt-24">
-                    <img className="h-[556px] w-[352px] rounded" src={jocker2} alt=""/>
+                    <img className="h-[556px] w-[352px] rounded" src={session.movieId.picture} alt=""/>
                     <div className="pt-6">
                         <div className="flex justify-between items-center">
-                            <h1 className="text-white font-bold font-serif text-4xl">JOCKER</h1>
+                            <h1 className="text-white font-bold font-serif text-4xl">{session.movieId.title}</h1>
                             <button
                                 className="bg-amber-300 text-black font-medium px-12 py-3 rounded-lg hover:bg-amber-400 duration-300">Book
                                 Now
@@ -60,16 +66,13 @@ function MovieDetails() {
                                 <p className="text-black font-medium font-sans">100</p>
                             </div>
                         </div>
-                        <p className="text-white font-medium font-serif text-lg pt-12">In a ruined and toxic future, a
-                            community exists in a giant underground silo that plunges
-                            hundreds of stories deep. There, men and women live in a society full of regulations they
-                            believe are meant to protect them.</p>
+                        <p className="text-white font-medium font-serif text-lg pt-12">{session.movieId.description}</p>
                         <div className="pt-12">
                             <ul>
-                                <li className="text-white font-medium font-serif text-lg">Start Date : 10/24/2025</li>
+                                <li className="text-white font-medium font-serif text-lg">Start Date : {session.startTime}</li>
                                 <li className="text-white font-medium font-serif text-lg py-3">Capacity: Comfortable
                                 </li>
-                                <li className="text-white font-medium font-serif text-lg">Price: 86$</li>
+                                <li className="text-white font-medium font-serif text-lg">Price: {session.price}$</li>
                             </ul>
                         </div>
                     </div>
@@ -78,18 +81,17 @@ function MovieDetails() {
 
                 <div className="flex flex-wrap justify-center items-center gap-10 py-2">
 
-                    <MovieCard img={img10} title="The Night Agent"/>
-                    <MovieCard img={img11} title="Hypnotic"/>
-                    <MovieCard img={img12} title="Black Night"/>
-                    <MovieCard img={img13} title="Book Club"/>
-                    <MovieCard img={img14} title="From" />
-                    <MovieCard img={img15} title="Sisu" />
-                    <MovieCard img={img8} title="Ghosted" />
-                    <MovieCard img={img9} title="John Wick: Ch..." />
+                    <div className="flex flex-wrap justify-center items-center gap-10 py-2">
+
+                        {sessions.map((session) => (
+                            <MovieCard key={session._id} img={session.movieId.picture} title={session.movieId.title}/>
+                        ))}
+
+                    </div>
 
                 </div>
 
-                <Footer />
+                <Footer/>
 
             </div>
         </>

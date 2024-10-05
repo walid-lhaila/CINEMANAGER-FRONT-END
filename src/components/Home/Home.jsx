@@ -131,12 +131,12 @@ function Home() {
 
                 </div>
 
-                <SectionTitle title="New Release - Movies" />
+                <SectionTitle title="Available Session - Movies" />
 
                 <div className="flex flex-wrap justify-center items-center gap-10 py-2">
 
                     {sessions.map((session) => (
-                        <MovieCard key={session._id} img={img} title={session.movieId.title} />
+                        <MovieCard key={session._id} img={session.movieId.picture} title={session.movieId.title} sessionId={session._id} />
                     ))}
 
                 </div>
