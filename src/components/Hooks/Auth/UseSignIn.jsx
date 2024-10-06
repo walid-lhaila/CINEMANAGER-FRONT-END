@@ -26,6 +26,8 @@ function UseSignIn() {
                 password: formData.password,
             });
 
+            localStorage.setItem('token', response.data.token);
+
             if(response.data.role === 'admin') {
                 console.log('Admin Logged In Successfully ', response.data);
                 navigate('/');

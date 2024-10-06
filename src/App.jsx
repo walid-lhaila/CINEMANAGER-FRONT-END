@@ -7,6 +7,7 @@ import ForgetPassword from "./components/Auth/ForgetPassword.jsx";
 import Home from "./components/Home/Home.jsx";
 import MovieDetails from "./components/Details/MovieDetails.jsx";
 import Reservation from "./components/Reservations/Reservation.jsx";
+import MyReservation from "./components/Reservations/MyReservation.jsx";
 function App() {
 
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/movieDetails/:id" element={<MovieDetails />} />
           <Route path="/reservation" element={<Reservation />} />
+          <Route path="/myReservation" element={<MyReservation />} />
       </Routes>
   );
 }
