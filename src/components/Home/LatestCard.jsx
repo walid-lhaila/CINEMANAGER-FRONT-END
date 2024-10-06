@@ -1,5 +1,5 @@
 
-function LatestCard({imgSrc, time, price, title, onDetailsClick, onBookClick}) {
+function LatestCard({imgSrc, time, price, title, onDetailsClick, onBookClick, showButtons = true}) {
     return (
         <div className="w-[32%] h-[340px]">
             <div className="relative w-full h-full bg-cover bg-center rounded-xl"
@@ -37,6 +37,8 @@ function LatestCard({imgSrc, time, price, title, onDetailsClick, onBookClick}) {
             </div>
             <div className="flex justify-center justify-between items-center py-3">
                 <h1 className="text-white font-serif font-bold text-3xl">{title}</h1>
+
+                {showButtons && (
                 <div className="flex justify-center items-center gap-3">
                     <button onClick={onDetailsClick}
                         className="px-3 py-2 rounded text-black bg-white hover:bg-gray-200 duration-300 font-sans font-medium">Détails
@@ -46,6 +48,7 @@ function LatestCard({imgSrc, time, price, title, onDetailsClick, onBookClick}) {
                         Now
                     </button>
                 </div>
+            )}
             </div>
         </div>
 
