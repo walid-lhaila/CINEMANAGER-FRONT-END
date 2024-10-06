@@ -24,8 +24,10 @@ function MovieDetails() {
         <>
             <NavBar />
             <div className="w-[65%] mx-auto pt-14">
-                <img className="w-[80%] h-[600px] mx-auto" src={jocker}/>
-                <div className="flex  gap-10 pt-24">
+                <video className="w-[100%] h-[600px] mx-auto" controls muted>
+                    <source src={session.movieId.trailer} type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>                <div className="flex  gap-10 pt-24">
                     <img className="h-[556px] w-[352px] rounded" src={session.movieId.picture} alt=""/>
                     <div className="pt-6">
                         <div className="flex justify-between items-center">
