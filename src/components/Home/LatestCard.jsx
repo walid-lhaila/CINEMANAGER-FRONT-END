@@ -1,5 +1,5 @@
-
-function LatestCard({imgSrc, time, price, title, onDetailsClick, onBookClick, showButtons = true}) {
+import {Link} from "react-router-dom";
+function LatestCard({imgSrc, time, price, sessionId, title, showButtons = true}) {
     return (
         <div className="w-[32%] h-[340px]">
             <div className="relative w-full h-full bg-cover bg-center rounded-xl"
@@ -40,13 +40,12 @@ function LatestCard({imgSrc, time, price, title, onDetailsClick, onBookClick, sh
 
                 {showButtons && (
                 <div className="flex justify-center items-center gap-3">
-                    <button onClick={onDetailsClick}
-                        className="px-3 py-2 rounded text-black bg-white hover:bg-gray-200 duration-300 font-sans font-medium">Détails
-                    </button>
-                    <button onClick={onBookClick}
-                        className="px-3 py-2 rounded bg-amber-300 text-black font-sans font-medium hover:bg-amber-400">Book
-                        Now
-                    </button>
+                    <Link to={`/movieDetails/${sessionId}`}>
+                        <button
+                            className="px-3 py-2 rounded text-black bg-amber-300 hover:bg-amber-400 duration-300 font-sans font-medium">Détails
+                        </button>
+                    </Link>
+
                 </div>
             )}
             </div>

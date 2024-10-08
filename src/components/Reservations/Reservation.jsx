@@ -1,4 +1,3 @@
-import img from "../../assets/sisu.png"
 import React, {useState} from "react";
 import {format} from "date-fns";
 import {Link, useLocation} from "react-router-dom";

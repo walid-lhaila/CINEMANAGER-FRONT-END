@@ -2,8 +2,9 @@ import React from 'react';
 
 function Footer() {
     return (
-        <footer >
-            <div className="flex justify-center pt-44 gap-4">
+        <footer className="pt-44" >
+            <div className="w-full h-[1px] bg-gray-600 "></div>
+            <div className="flex justify-center pt-10 gap-4">
             <div className="w-[20%]">
                 <h1 className="text-white text-2xl font-bold font-serif underline-offset-8">Menu</h1>
                 <ul className="py-5 text-gray-700 ">

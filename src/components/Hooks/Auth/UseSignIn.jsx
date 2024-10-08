@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useState} from "react";
 import axios from "axios";
 import {jwtDecode} from "jwt-decode";
@@ -12,11 +12,25 @@ function UseSignIn() {
     });
 
     const [error, setError] = useState(null);
+    const [showErrorMessage, setShowErrorMessage] = useState(false);
+
+
+    useEffect(() => {
+        if(error) {
+            setShowErrorMessage(true);
+            const timer = setTimeout(() => {
+                setShowErrorMessage(false);
+            }, 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [error]);
+
     const navigate = useNavigate();
 
     const handleChange = (e) => {
         const {name, value} = e.target;
         setFormData({ ...formData, [name]: value });
+        setError(null);
     };
 
     const handleSubmit = async (e) => {
@@ -41,6 +55,11 @@ function UseSignIn() {
                 navigate('/home');
             }
         } catch (err) {
+            if(err.response && err.response.status === 401) {
+                setError('Invalid Email Or Password')
+            } else {
+                setError('An unexpected error occurred.');
+            }
             console.error("There was an error creating the account", err);
         }
     };
@@ -49,7 +68,8 @@ function UseSignIn() {
         handleChange,
         handleSubmit,
         formData,
-        error
+        error,
+        showErrorMessage
     };
 }
 
