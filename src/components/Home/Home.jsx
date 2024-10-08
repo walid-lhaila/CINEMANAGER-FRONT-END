@@ -18,6 +18,8 @@ function Home() {
     const { sessions, error: sessionError } = getSession();
     const { latestSessions, error: latestSessionError, movieTime } = useLatestSession();
 
+
+
     return (
         <>
             <NavBar/>

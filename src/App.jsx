@@ -1,5 +1,5 @@
 import './App.css'
-import { Routes, Route } from "react-router-dom";
+import {Routes, Route, Navigate} from "react-router-dom";
 import LandingPage from "./components/LandingPage.jsx";
 import SignIn from "./components/Auth/SignIn.jsx";
 import SignUp from "./components/Auth/SignUp.jsx";
@@ -14,7 +14,8 @@ function App() {
   return (
       <Routes>
         <Route path="/" element={<LandingPage />} />
-          <Route path="/signIn" element={<SignIn />} />
+        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/signIn" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/UseForgetPassword" element={<ForgetPassword />} />
           <Route path="/NewPassword/:token" element={<NewPassword />} />
