@@ -3,22 +3,24 @@ import NavBar from "../NavBar.jsx";
 import SectionTitle from "../Home/SectionTitle.jsx";
 import MovieCard from "../Home/MovieCard.jsx";
 import Footer from "../Footer.jsx";
-import jocker from "../../assets/jocker.jpeg";
-import jocker2 from "../../assets/jocker2.jpeg";
 import getSession from "../Hooks/Session/GetSession.jsx";
 import sessionDetails from "../Hooks/Session/SessionDetails.jsx";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 function MovieDetails() {
             const {id} = useParams();
             const { session, error, movieTime } = sessionDetails({id});
             const {sessions} = getSession();
-
+            const navigate = useNavigate();
             if (error) {
                 return <div>Error fetching session: {error.message}</div>;
             }
 
             if (!session) {
                 return <div>Loading...</div>;
+            }
+
+            const handleBookNow = () => {
+                navigate("/Reservation", {state: {session} });
             }
     return (
         <>
@@ -32,7 +34,7 @@ function MovieDetails() {
                     <div className="pt-6">
                         <div className="flex justify-between items-center">
                             <h1 className="text-white font-bold font-serif text-4xl">{session.movieId.title}</h1>
-                            <button
+                            <button onClick={handleBookNow}
                                 className="bg-amber-300 text-black font-medium px-12 py-3 rounded-lg hover:bg-amber-400 duration-300">Book
                                 Now
                             </button>

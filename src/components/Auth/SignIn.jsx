@@ -29,7 +29,7 @@ function SignIn() {
                         <Link to="/signup">
                             <Button text="Sign Up" type="submit" className="bg-white hover:bg-gray-200"/>
                         </Link>
-                        <Link to="/ForgetPassword" className="text-center text-gray-200 font-serif py-5 hover:underline cursor-pointer">Forgot password?</Link>
+                        <Link to="/UseForgetPassword" className="text-center text-gray-200 font-serif py-5 hover:underline cursor-pointer">Forgot password?</Link>
                         <p className="text-gray-300 font-serif">New to Cinema ? <span className="text-white font-serif font-medium hover:underline cursor-pointer">Sign up now.</span></p>
                     </form>
                 </div>

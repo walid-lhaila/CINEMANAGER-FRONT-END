@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState} from "react";
 import axios from "axios";
+import {jwtDecode} from "jwt-decode";
 import {useNavigate} from "react-router-dom";
 
 function UseSignIn() {
@@ -26,7 +27,11 @@ function UseSignIn() {
                 password: formData.password,
             });
 
-            localStorage.setItem('token', response.data.token);
+            const token = response.data.token;
+            localStorage.setItem('token', token);
+
+            const decodedToken = jwtDecode(token);
+            localStorage.setItem('userId', decodedToken.id);
 
             if(response.data.role === 'admin') {
                 console.log('Admin Logged In Successfully ', response.data);
