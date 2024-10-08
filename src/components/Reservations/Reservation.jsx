@@ -1,7 +1,7 @@
 import img from "../../assets/sisu.png"
 import React, {useState} from "react";
 import {format} from "date-fns";
-import {useLocation} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import ReserveSeat from "../Hooks/Reservations/ReserveSeat.jsx";
 
 function Reservation() {
@@ -92,9 +92,12 @@ function Reservation() {
 
 
                             <div className="flex justify-center items-center gap-5 pt-10">
-                                <button
-                                    className="bg-gray-300 text-black font-medium px-12 py-3 rounded-lg hover:bg-white duration-300">Cancel
-                                </button>
+                                <Link to="/home">
+                                    <button
+                                        className="bg-gray-300 text-black font-medium px-12 py-3 rounded-lg hover:bg-white duration-300">Cancel
+                                    </button>
+                                </Link>
+
                                 <button onClick={handleBookClick}
                                         className="bg-amber-300 text-black font-medium px-12 py-3 rounded-lg hover:bg-amber-400 duration-300">Book
                                 </button>
