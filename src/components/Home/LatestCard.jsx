@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-function LatestCard({imgSrc, time, price, sessionId, title, showButtons = true}) {
+function LatestCard({imgSrc, time, price, sessionId, title, showButtons = true, showDeleteButton = false, onDelete}) {
     return (
         <div className="w-[32%] h-[340px]">
             <div className="relative w-full h-full bg-cover bg-center rounded-xl"
@@ -39,19 +39,27 @@ function LatestCard({imgSrc, time, price, sessionId, title, showButtons = true})
                 <h1 className="text-white font-serif font-bold text-3xl">{title}</h1>
 
                 {showButtons && (
-                <div className="flex justify-center items-center gap-3">
-                    <Link to={`/movieDetails/${sessionId}`}>
-                        <button
-                            className="px-3 py-2 rounded text-black bg-amber-300 hover:bg-amber-400 duration-300 font-sans font-medium">Détails
-                        </button>
-                    </Link>
+                    <div className="flex justify-center items-center gap-3">
+                        <Link to={`/movieDetails/${sessionId}`}>
+                            <button
+                                className="px-3 py-2 rounded text-black bg-amber-300 hover:bg-amber-400 duration-300 font-sans font-medium">Détails
+                            </button>
+                        </Link>
+                    </div>
+                )}
+                        {showDeleteButton && (
+                            <button onClick={onDelete}
+                                className="px-3 py-2 rounded text-white bg-red-500 hover:bg-red-600 duration-300 font-sans font-medium">Delete
+                            </button>
+                        )}
 
-                </div>
-            )}
-            </div>
-        </div>
 
-    );
-}
+
+
+                    </div>
+                    </div>
+
+                    );
+                }
 
 export default LatestCard;
