@@ -25,7 +25,7 @@ function ReserveSeat() {
             console.log(`Seat number ${seatNumber} reserved successfully`, response.data);
 
         } catch (err) {
-            setError(err.response?.data?.message || 'Error Reserving Seat');
+            setError('Error Reserving Seat');
         }
     }
     return {

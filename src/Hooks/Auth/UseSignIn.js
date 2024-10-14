@@ -41,11 +41,14 @@ function UseSignIn() {
                 password: formData.password,
             });
 
+
             const token = response.data.token;
             localStorage.setItem('token', token);
 
             const decodedToken = jwtDecode(token);
             localStorage.setItem('userId', decodedToken.id);
+
+
 
             if(response.data.role === 'admin') {
                 console.log('Admin Logged In Successfully ', response.data);

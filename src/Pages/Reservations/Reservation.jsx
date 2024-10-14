@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {format} from "date-fns";
 import {Link, useLocation} from "react-router-dom";
-import ReserveSeat from "../Hooks/Reservations/ReserveSeat.jsx";
+import ReserveSeat from "../../Hooks/Reservations/ReserveSeat.jsx";
 
 function Reservation() {
     const {handleReserveSeat, error} = ReserveSeat();

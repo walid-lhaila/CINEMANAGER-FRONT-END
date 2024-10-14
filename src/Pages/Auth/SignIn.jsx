@@ -3,7 +3,7 @@ import backgroundImg from '../../assets/bgLogin.jpeg'
 import {Link} from "react-router-dom";
 import Input from "./AuthInput.jsx"
 import Button from "./AuthBtn.jsx";
-import useSignIn from "../Hooks/Auth/UseSignIn.jsx";
+import useSignIn from "../../Hooks/Auth/UseSignIn.jsx";
 import React from "react";
 function SignIn() {
     const { formData, handleSubmit, error, handleChange, showErrorMessage} = useSignIn();

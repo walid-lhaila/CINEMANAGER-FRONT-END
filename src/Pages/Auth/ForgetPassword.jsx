@@ -3,7 +3,7 @@ import backgroundImg from "../../assets/bgLogin.jpeg";
 import logo from "../../assets/logo.png";
 import Input from "./AuthInput.jsx"
 import Button from "./AuthBtn.jsx"
-import useForgetPassword from "../Hooks/Auth/UseForgetPassword.jsx";
+import useForgetPassword from "../../Hooks/Auth/UseForgetPassword.jsx";
 function ForgetPassword() {
     const {setEmail, handleSubmit, email, success, showSuccessMessage,error, showErrorMessage} = useForgetPassword();
     return (

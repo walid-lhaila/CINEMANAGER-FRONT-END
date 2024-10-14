@@ -1,12 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import NavBar from "../NavBar.jsx";
 import SectionTitle from "../Home/SectionTitle.jsx";
 import MovieCard from "../Home/MovieCard.jsx";
 import Footer from "../Footer.jsx";
-import getSession from "../Hooks/Session/GetSession.jsx";
-import sessionDetails from "../Hooks/Session/SessionDetails.jsx";
+import getSession from "../../Hooks/Session/GetSession.jsx";
+import sessionDetails from "../../Hooks/Session/SessionDetails.jsx";
 import {useNavigate, useParams} from "react-router-dom";
+import walid from "../../assets/walid.png";
 function MovieDetails() {
+
+            const [visible, setVisible] = useState(false);
+            const showContent = () =>  {
+                setVisible(!visible);
+            }
+
             const {id} = useParams();
             const { session, error, movieTime } = sessionDetails({id});
             const {sessions} = getSession();
@@ -15,17 +22,21 @@ function MovieDetails() {
                 return <div>Error fetching session: {error.message}</div>;
             }
 
-            if (!session) {
-                return <div>Loading...</div>;
-            }
 
             const handleBookNow = () => {
                 navigate("/Reservation", {state: {session} });
             }
+
+
+
+
+
     return (
         <>
             <NavBar />
             <div className="w-[65%] mx-auto pt-14">
+                {session ? (
+                <>
                 <video className="w-[100%] h-[600px] mx-auto" controls muted>
                     <source src={session.movieId.trailer} type="video/mp4" />
                     Your browser does not support the video tag.
@@ -82,6 +93,32 @@ function MovieDetails() {
                         </div>
                     </div>
                 </div>
+                    </>
+                ) : (
+                    <div>Loading session details...</div>
+
+                )}
+
+                <div className="py-10 px-2 flex justify-between items-center">
+                    <div className="flex items-center gap-2">
+                        <svg className="w-8 h-8 text-gray-800 dark:text-white" aria-hidden="true"
+                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M7.556 8.5h8m-8 3.5H12m7.111-7H4.89a.896.896 0 0 0-.629.256.868.868 0 0 0-.26.619v9.25c0 .232.094.455.26.619A.896.896 0 0 0 4.89 16H9l3 4 3-4h4.111a.896.896 0 0 0 .629-.256.868.868 0 0 0 .26-.619v-9.25a.868.868 0 0 0-.26-.619.896.896 0 0 0-.63-.256Z"/>
+                        </svg>
+                        <h1 className="text-white text-3xl font-medium font-serif">Comments</h1>
+                    </div>
+
+                    <svg onClick={showContent} className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer hover:text-amber-500 duration-300" aria-hidden="true"
+                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="m9 5 7 7-7 7"/>
+                    </svg>
+                </div>
+
+                <div className={`overflow-hidden transition-all duration-500 ${visible ? 'h-auto' : 'h-0'}`}>
+
+                </div>
                 <SectionTitle title="You may also like"/>
 
                 <div className="flex flex-wrap justify-center items-center gap-10 py-2">
@@ -89,7 +126,8 @@ function MovieDetails() {
                     <div className="flex flex-wrap justify-center items-center gap-10 py-2">
 
                         {sessions.map((session) => (
-                            <MovieCard key={session._id} img={session.movieId.picture} title={session.movieId.title} sessionId={session._id}/>
+                            <MovieCard key={session._id} img={session.movieId.picture} title={session.movieId.title}
+                                       sessionId={session._id}/>
                         ))}
 
                     </div>
@@ -101,6 +139,7 @@ function MovieDetails() {
             </div>
         </>
     );
+
 }
 
 export default MovieDetails;

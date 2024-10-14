@@ -3,7 +3,7 @@ import logo from "../../assets/logo.png";
 import {Link} from "react-router-dom";
 import Input from "./AuthInput.jsx"
 import Button from "./AuthBtn.jsx"
-import useSignUp from "../../components/Hooks/Auth/UseSignUp.jsx";
+import useSignUp from "../../Hooks/Auth/UseSignUp.jsx";
 function SignUp() {
     const { formData, handleChange, handleSubmit, error } = useSignUp();
     if (!formData) return null;

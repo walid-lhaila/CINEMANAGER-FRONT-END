@@ -3,7 +3,7 @@ import backgroundImg from "../../assets/bgLogin.jpeg";
 import logo from "../../assets/logo.png";
 import Input from "./AuthInput.jsx";
 import Button from "./AuthBtn.jsx";
-import useNewPassword from "../Hooks/Auth/useNewPassword.jsx";
+import useNewPassword from "../../Hooks/Auth/useNewPassword.jsx";
 
 function NewPassword() {
     const { setNewPassword, handleSubmit, error } = useNewPassword();

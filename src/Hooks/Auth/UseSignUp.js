@@ -28,7 +28,6 @@ function UseSignUp() {
             console.log(response.data);
             navigate('/signin');
         } catch (err) {
-            console.error("There was an error creating the account", err);
             setError(err.response ? err.response.data.message : "somthing went wrong");
         }
     };
