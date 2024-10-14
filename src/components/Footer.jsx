@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 function Footer() {
     return (
         <footer className="pt-44" >
@@ -72,14 +73,14 @@ function Footer() {
                 <h1 className="text-white text-2xl font-bold font-serif underline-offset-8">Leave a message</h1>
 
                 <form className="w-full py-5 flex flex-col">
-                    <input className="placeholder:px-3 border border-2 border-gray-500 py-2 bg-transparent text-white"
+                    <input className="placeholder:px-3 border border-2 border-gray-500 py-2 px-3 bg-transparent text-white"
                            type="text" placeholder="Name *"/>
                     <div className="py-3 w-full">
                         <input
-                            className="placeholder:px-3 border border-2 border-gray-500 py-2 bg-transparent w-full text-white"
+                            className="placeholder:px-3 border border-2 border-gray-500 py-2 px-3 bg-transparent w-full text-white"
                             type="email" placeholder="Email Adress *"/>
                     </div>
-                    <textarea className="placeholder:p-3 border border-2 border-gray-500 bg-transparent text-white"
+                    <textarea className="placeholder:p-3 border border-2 border-gray-500 px-3 bg-transparent text-white"
                               placeholder="Message *" cols="30" rows="5"></textarea>
                     <div className="flex justify-end py-4">
                         <button

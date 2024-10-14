@@ -1,7 +1,7 @@
 import React from 'react';
 import flash from "../../assets/flash.png";
-import Input from "../Auth/AuthInput.jsx";
-import Button from "../Auth/AuthBtn.jsx"
+import Input from "../../components/Input.jsx";
+import Button from "../../components/AuthBtn.jsx"
 function UserInfo() {
     return (
         <div className="flex flex-col justify-center items-center border-2 border-gray-300 shadow-xl rounded  shadow-gray-300/50 w-[55%] mt-32 mx-auto">

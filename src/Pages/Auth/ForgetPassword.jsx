@@ -1,9 +1,9 @@
 import React from 'react';
 import backgroundImg from "../../assets/bgLogin.jpeg";
 import logo from "../../assets/logo.png";
-import Input from "./AuthInput.jsx"
-import Button from "./AuthBtn.jsx"
-import useForgetPassword from "../../Hooks/Auth/UseForgetPassword.jsx";
+import Input from "../../components/Input.jsx"
+import Button from "../../components/AuthBtn.jsx"
+import useForgetPassword from "../../Hooks/Auth/UseForgetPassword.js";
 function ForgetPassword() {
     const {setEmail, handleSubmit, email, success, showSuccessMessage,error, showErrorMessage} = useForgetPassword();
     return (

@@ -1,12 +1,12 @@
 import React from 'react';
-import NavBar from "../NavBar.jsx";
+import NavBar from "../../components/NavBar.jsx";
 import backgroundImg from "../../assets/avatar.png";
-import LatestCard from "./LatestCard.jsx";
-import MovieCard from "./MovieCard.jsx";
-import Footer from "../Footer.jsx";
-import SectionTitle from "./SectionTitle.jsx";
-import getSession from "../../Hooks/Session/GetSession.jsx";
-import useLatestSession from "../../Hooks/Session/useLatestSession.jsx";
+import LatestCard from "../../components/LatestCard.jsx";
+import MovieCard from "../../components/MovieCard.jsx";
+import Footer from "../../components/Footer.jsx";
+import SectionTitle from "../../components/SectionTitle.jsx";
+import getSession from "../../Hooks/Session/GetSession.js";
+import useLatestSession from "../../Hooks/Session/useLatestSession.js";
 import img1 from "../../assets/manifest.png";
 import img2 from "../../assets/fubar.png";
 import img3 from "../../assets/flash.png";
@@ -138,7 +138,7 @@ function Home() {
                     ))}
                 </div>
 
-                <SectionTitle title="Available Session - Movies" />
+                <SectionTitle className="pt-24" title="Available Session - Movies" />
 
                 <div className="flex flex-wrap justify-center items-center gap-10 py-2">
 

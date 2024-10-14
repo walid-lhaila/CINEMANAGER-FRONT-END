@@ -1,8 +1,8 @@
 import React from 'react';
 
-function SectionTitle({title}) {
+function SectionTitle({title, className}) {
     return (
-        <div className="flex justify-center justify-between items-center pt-24 ">
+        <div className={`flex justify-center justify-between items-center ${className}`}>
             <h1 className="text-white font-bold font-serif text-2xl py-10">{title}</h1>
             <div className="flex justify-center items-center gap-2 cursor-pointer ">
                 <h1 className="text-gray-300 font-medium font-serif text-2xl hover:text-amber-300 duration-300">View

@@ -47,12 +47,11 @@ function UseSignIn() {
 
             const decodedToken = jwtDecode(token);
             localStorage.setItem('userId', decodedToken.id);
+            const userRole = decodedToken.role;
 
-
-
-            if(response.data.role === 'admin') {
+            if(userRole === 'admin') {
                 console.log('Admin Logged In Successfully ', response.data);
-                navigate('/');
+                navigate('/admin/Dashboard');
             }else {
                 console.log('Client Logged In Successfully ', response.data);
                 navigate('/home');

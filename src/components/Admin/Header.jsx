@@ -1,9 +1,9 @@
 import React from 'react';
-import walid from "../assets/walid.png";
+import walid from "../../assets/walid.png";
 
 function Header() {
     return (
-        <div className=' w-full h-[80px] bg-white'>
+        <div className=' w-full h-[80px] bg-white border border-b border-gray-200'>
             <div className=" flex justify-between items-center h-[100%] w-[90%] mx-auto">
                 <div className="flex justify-start items-center gap-2">
                     <svg className="w-6 h-6 text-gray-400 " aria-hidden="true"

@@ -1,9 +1,9 @@
 import React from 'react';
 import backgroundImg from "../../assets/bgLogin.jpeg";
 import logo from "../../assets/logo.png";
-import Input from "./AuthInput.jsx";
-import Button from "./AuthBtn.jsx";
-import useNewPassword from "../../Hooks/Auth/useNewPassword.jsx";
+import Input from "../../components/Input.jsx";
+import Button from "../../components/AuthBtn.jsx";
+import useNewPassword from "../../Hooks/Auth/useNewPassword.js";
 
 function NewPassword() {
     const { setNewPassword, handleSubmit, error } = useNewPassword();

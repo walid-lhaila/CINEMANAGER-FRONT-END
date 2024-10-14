@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import logo from "../assets/logo.png";
-
+import logo from "../../assets/logo.png";
 function SidBar() {
     const [activeItem, setActiveItem] = useState(null);
 

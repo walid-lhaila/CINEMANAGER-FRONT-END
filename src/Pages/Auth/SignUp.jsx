@@ -1,9 +1,9 @@
 import backgroundImg from "../../assets/bgLogin.jpeg";
 import logo from "../../assets/logo.png";
 import {Link} from "react-router-dom";
-import Input from "./AuthInput.jsx"
-import Button from "./AuthBtn.jsx"
-import useSignUp from "../../Hooks/Auth/UseSignUp.jsx";
+import Input from "../../components/Input.jsx"
+import Button from "../../components/AuthBtn.jsx"
+import useSignUp from "../../Hooks/Auth/UseSignUp.js";
 function SignUp() {
     const { formData, handleChange, handleSubmit, error } = useSignUp();
     if (!formData) return null;

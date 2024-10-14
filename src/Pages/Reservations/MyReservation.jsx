@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import NavBar from "../NavBar.jsx";
-import LatestCard from "../Home/LatestCard.jsx";
-import GetMyReservations from "../../Hooks/Reservations/GetMyReservations.jsx";
-import DeleteReservation from "../../Hooks/Reservations/DeleteReservation.jsx";
+import NavBar from "../../components/NavBar.jsx";
+import LatestCard from "../../components/LatestCard.jsx";
+import GetMyReservations from "../../Hooks/Reservations/GetMyReservations.js";
+import DeleteReservation from "../../Hooks/Reservations/DeleteReservation.js";
 
 function MyReservation() {
     const { reservations, error, time } = GetMyReservations();
