@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import logo from "../../assets/logo.png";
+import {Link} from "react-router-dom";
 function SidBar() {
     const [activeItem, setActiveItem] = useState(null);
 
@@ -7,11 +8,11 @@ function SidBar() {
         setActiveItem(item);
     }
     return (
-               <div className="bg-white border-r border-gray-200 w-[17%] h-screen ">
+           <div className="bg-white border-r border-gray-200 w-[17%] h-screen ">
             <img className="h-[140px]" src={logo} alt=""/>
             <div className=" relative px-4 py-10 h-[823px]">
                 <ul className="">
-                    <div onClick={() => handleClick('dashboard')}
+                    <Link to="/admin/Dashboard" onClick={() => handleClick('dashboard')}
                          className={`group flex justify-start items-center gap-4 cursor-pointer hover:bg-gray-100 duration-100 py-3 px-2 rounded font-serif ${activeItem === 'dashboard' ? 'bg-gray-100' : ''}`}>
                         <svg
                             className={` group-hover:text-amber-500 duration-100  w-8 h-8 text-gray-800 cursor-pointer ${activeItem === 'dashboard' ? 'text-amber-500' : ''}`}
@@ -21,9 +22,9 @@ function SidBar() {
                                   d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5"/>
                         </svg>
                         <li className={`group-hover:text-amber-500 duration-100 cursor-pointer text-lg ${activeItem === 'dashboard' ? 'text-amber-500' : ''}`}>Dashboard</li>
-                    </div>
+                    </Link>
 
-                    <div onClick={() => handleClick('movies')}
+                    <Link to="/admin/movies" onClick={() => handleClick('movies')}
                          className={`flex justify-start items-center gap-4 group cursor-pointer hover:bg-gray-100 duration-100  py-3 px-2 rounded mt-2 ${activeItem === 'movies' ? 'bg-gray-100' : ''}`}>
                         <svg
                             className={`w-8 h-8 text-gray-800  group-hover:text-amber-500 duration-100 cursor-pointer ${activeItem === 'movies' ? 'text-amber-500' : ''}`}
@@ -33,7 +34,7 @@ function SidBar() {
                                   d="M19 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1Zm0 0-4 4m5 0H4m1 0 4-4m1 4 4-4m-4 7v6l4-3-4-3Z"/>
                         </svg>
                         <li className={`group-hover:text-amber-500 duration-100 cursor-pointer font-medium font-serif text-lg ${activeItem === 'movies' ? 'text-amber-500' : ''}`}>Movies</li>
-                    </div>
+                    </Link>
 
                     <div onClick={() => handleClick('rooms')}
                          className={`flex justify-start items-center gap-4  group cursor-pointer hover:bg-gray-100 duration-100 py-3 px-2 rounded mt-2 ${activeItem === 'rooms' ? 'bg-gray-100' : ''}`}>
@@ -59,7 +60,7 @@ function SidBar() {
                         <li className={`group-hover:text-amber-500 duration-100 cursor-pointer font-medium font-serif text-lg ${activeItem === 'session' ? 'text-amber-500' : ''}`}>Sessions</li>
                     </div>
 
-                    <div onClick={() => handleClick('category')}
+                    <Link to="/admin/addCategory" onClick={() => handleClick('category')}
                          className={`flex justify-start items-center gap-4  group cursor-pointer hover:bg-gray-100 duration-100 py-3 px-2 rounded mt-2 ${activeItem === 'category' ? 'bg-gray-100' : ''}`}>
                         <svg
                             className={`w-8 h-8 text-gray-800  group-hover:text-amber-500 duration-100 cursor-pointer ${activeItem === 'category' ? 'text-amber-500' : ''} `}
@@ -69,7 +70,7 @@ function SidBar() {
                                   d="M9.143 4H4.857A.857.857 0 0 0 4 4.857v4.286c0 .473.384.857.857.857h4.286A.857.857 0 0 0 10 9.143V4.857A.857.857 0 0 0 9.143 4Zm10 0h-4.286a.857.857 0 0 0-.857.857v4.286c0 .473.384.857.857.857h4.286A.857.857 0 0 0 20 9.143V4.857A.857.857 0 0 0 19.143 4Zm-10 10H4.857a.857.857 0 0 0-.857.857v4.286c0 .473.384.857.857.857h4.286a.857.857 0 0 0 .857-.857v-4.286A.857.857 0 0 0 9.143 14Zm10 0h-4.286a.857.857 0 0 0-.857.857v4.286c0 .473.384.857.857.857h4.286a.857.857 0 0 0 .857-.857v-4.286a.857.857 0 0 0-.857-.857Z"/>
                         </svg>
                         <li className={`group-hover:text-amber-500 duration-100 cursor-pointer font-medium font-serif text-lg ${activeItem === 'category' ? 'text-amber-500' : ''}`}>Categories</li>
-                    </div>
+                    </Link>
 
                     <div
                         className="absolute bottom-10 w-[82%] flex justify-start items-center gap-4  group cursor-pointer hover:bg-gray-100 duration-100 py-3 px-2 rounded mt-2">

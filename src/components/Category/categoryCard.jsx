@@ -1,15 +1,19 @@
 import React from 'react';
+import useDeleteCategory from "../../Hooks/Categories/deleteCategory.js";
 
-function CategoryCard() {
+function CategoryCard({name, categoryId}) {
+    const { deleteCategory } = useDeleteCategory();
+    const handleDelete = () => {
+        deleteCategory(categoryId);
+    }
     return (
-        <div className="flex justify-start items-center gap-3 w-[96%] mx-auto ">
             <div
                 className="bg-gradient-to-r from-amber-400  shadow-xl shadow-gray-700/10 to-white  rounded-lg w-[24%] border-gray-300 border">
                 <div className="p-4">
-                    <h1 className="text-black text-2xl font-bold font-serif">Comedy</h1>
+                    <h1 className="text-black text-2xl font-bold font-serif">{name}</h1>
                     <div className="flex justify-between px-2">
                         <h1 className="text-black font-medium text-3xl font-serif"></h1>
-                        <div
+                        <div onClick={handleDelete}
                             className="bg-red-300 py-3 px-3 rounded cursor-pointer hover:bg-red-500 duration-300 group">
                             <svg className="w-6 h-6 dark:text-red-800 group-hover:text-red-100 duration-300"
                                  aria-hidden="true"
@@ -23,7 +27,7 @@ function CategoryCard() {
                     </div>
                 </div>
             </div>
-        </div>);
+        );
 }
 
 export default CategoryCard;

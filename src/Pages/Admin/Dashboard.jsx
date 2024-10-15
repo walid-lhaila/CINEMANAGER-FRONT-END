@@ -5,6 +5,7 @@ import StatistiqueCards from "../../components/Admin/StatistiqueCards.jsx";
 import getAllClients from "../../Hooks/Users/GetAllClients.js";
 function Dashboard() {
         const {clients} = getAllClients();
+
     return (
             <>
                 <div className="flex bg-white">

@@ -11,24 +11,34 @@ import Reservation from "./Pages/Reservations/Reservation.jsx";
 import MyReservation from "./Pages/Reservations/MyReservation.jsx";
 import NewPassword from "./Pages/Auth/NewPassword.jsx";
 import Categories from "./Pages/Admin/Categories.jsx";
+import Movies from "./Pages/Admin/Movies.jsx";
+import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import './toast.css';
+
 function App() {
 
   return (
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="*" element={<Navigate to="/" />} />
-        <Route path="/signIn" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/UseForgetPassword" element={<ForgetPassword />} />
-          <Route path="/NewPassword/:token" element={<NewPassword />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/movieDetails/:id" element={<MovieDetails />} />
-          <Route path="/reservation" element={<Reservation />} />
-          <Route path="/myReservation" element={<MyReservation />} />
+        <div>
+            <ToastContainer />
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="*" element={<Navigate to="/" />} />
+              <Route path="/signIn" element={<SignIn />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/UseForgetPassword" element={<ForgetPassword />} />
+              <Route path="/NewPassword/:token" element={<NewPassword />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/movieDetails/:id" element={<MovieDetails />} />
+              <Route path="/reservation" element={<Reservation />} />
+              <Route path="/myReservation" element={<MyReservation />} />
 
-          <Route path="/admin/Dashboard" element={<Dashboard />} />
-          <Route path="/admin/addCategory" element={<Categories />} />
-      </Routes>
+
+              <Route path="/admin/Dashboard" element={<Dashboard />} />
+              <Route path="/admin/addCategory" element={<Categories />} />
+              <Route path="/admin/movies" element={<Movies />} />
+          </Routes>
+        </div>
   );
 }
 
