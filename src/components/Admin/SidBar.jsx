@@ -8,7 +8,7 @@ function SidBar() {
         setActiveItem(item);
     }
     return (
-           <div className="bg-white border-r border-gray-200 w-[17%] h-screen ">
+           <div className="bg-white  border-r border-gray-200 w-[17%] h-screen ">
             <img className="h-[140px]" src={logo} alt=""/>
             <div className=" relative px-4 py-10 h-[823px]">
                 <ul className="">

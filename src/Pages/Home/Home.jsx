@@ -134,7 +134,7 @@ function Home() {
 
                 <div className="flex justify-center items-center gap-8 py-2">
                     {latestSessions && latestSessions.map((session) => (
-                        <LatestCard key={session._id}  imgSrc={session.movieId.picture} title={session.movieId.title} time={movieTime(session.startTime, session.endTime)} price={session.price} sessionId={session._id}/>
+                        <LatestCard key={session._id}  imgSrc={session.movieId.picture} title={session.movieId.title.length > 10 ? `${session.movieId.title.slice(0, 10)}...` : session.movieId.title} time={movieTime(session.startTime, session.endTime)} price={session.price} sessionId={session._id}/>
                     ))}
                 </div>
 
@@ -143,7 +143,7 @@ function Home() {
                 <div className="flex flex-wrap justify-center items-center gap-10 py-2">
 
                     {sessions.map((session) => (
-                        <MovieCard key={session._id} img={session.movieId.picture} title={session.movieId.title} sessionId={session._id} />
+                        <MovieCard key={session._id} img={session.movieId.picture} title={session.movieId.title.length > 10 ? `${session.movieId.title.slice(0, 10)}...` : session.movieId.title} sessionId={session._id} />
                     ))}
 
                 </div>
