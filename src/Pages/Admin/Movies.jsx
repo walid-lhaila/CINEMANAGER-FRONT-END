@@ -40,7 +40,7 @@ function Movies() {
 
                     <div className="flex flex-wrap justify-center items-center gap-3 px-10 py-5">
                         {movies.map((movie) => (
-                            <MovieCard key={movie._id} img={movie.picture} title={movie.title.length > 10 ? `${movie.title.slice(0, 10)}...` : movie.title}  />
+                            <MovieCard key={movie._id} img={movie.picture} title={movie.title.length > 10 ? `${movie.title.slice(0, 10)}...` : movie.title} movieId={movie._id} />
                         ))}
 
                     </div>

@@ -40,7 +40,7 @@ function LatestCard({imgSrc, time, price, sessionId, title, showButtons = true, 
 
                 {showButtons && (
                     <div className="flex justify-center items-center gap-3">
-                        <Link to={`/movieDetails/${sessionId}`}>
+                        <Link to={`/sessionDetails/${sessionId}`}>
                             <button className="px-3 py-2 rounded text-black bg-amber-300 hover:bg-amber-400 duration-300 font-sans font-medium">
                                 Détails
                             </button>

@@ -1,9 +1,7 @@
 import axios from "axios";
 import {toast} from "react-toastify";
-import {useNavigate} from "react-router-dom";
 
 function DeleteCategory() {
-    const navigate = useNavigate();
 
     const deleteCategory = async (categoryId) => {
         const token = localStorage.getItem("token");

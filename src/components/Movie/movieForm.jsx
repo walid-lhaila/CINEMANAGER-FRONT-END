@@ -25,7 +25,7 @@ function MovieForm({removeForm}) {
                         <div className=" flex justify-center items-center gap-2 pt-8 ">
 
                             <input type="text" name="title" placeholder="Name" onChange={handleChange} value={formData.title} className={`py-2 px-2 w-[40%]  placeholder:text-gray-600 border border-1 border-gray-900 rounded font-serif font-medium placeholder:px-4`}/>
-                            <select name="categories" multiple onChange={handleCategoryChange} className="py-2.5 px-3 border w-[40%] border-1 border-gray-900 bg-white rounded font-serif font-medium">
+                            <select name="categories" multiple onChange={handleCategoryChange} className=" h-11 px-3 border w-[40%] border-1 border-gray-900 bg-white rounded font-serif font-medium">
                                 <option value="">Select category</option>
                                 {categories.map((category) => (
                                     <option key={category._id} value={category._id}>{category.name}</option>

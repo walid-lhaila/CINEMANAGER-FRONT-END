@@ -13,7 +13,7 @@ function MovieCard({img, title, sessionId}) {
                     className="transform-gpu p-4 w-[230px] space-y-3 text-xl group-hover:opacity-100 group-hover:translate-y-0 translate-y-4 pb-10 transform transition duration-500 ease-in-out">
                     <div className="w-full ml-[-16px]">
                         <div className="flex justify-end">
-                            <Link to={`/movieDetails/${sessionId}`}>
+                            <Link to={`/sessionDetails/${sessionId}`}>
                                 <button
                                     className="bg-amber-300 px-4 text-sm text-black hover:bg-white py-1 hover:text-black duration-500 mt-2">Détails
                                 </button>

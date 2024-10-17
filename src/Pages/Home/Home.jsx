@@ -3,10 +3,12 @@ import NavBar from "../../components/NavBar.jsx";
 import backgroundImg from "../../assets/avatar.png";
 import LatestCard from "../../components/LatestCard.jsx";
 import MovieCard from "../../components/MovieCard.jsx";
+import MoviesCard from "../../components/Movie/moviesCard.jsx";
 import Footer from "../../components/Footer.jsx";
 import SectionTitle from "../../components/SectionTitle.jsx";
 import getSession from "../../Hooks/Session/GetSession.js";
 import useLatestSession from "../../Hooks/Session/useLatestSession.js";
+import useGetAllMovies from "../../Hooks/Movie/getAllMovies.js";
 import img1 from "../../assets/manifest.png";
 import img2 from "../../assets/fubar.png";
 import img3 from "../../assets/flash.png";
@@ -15,8 +17,9 @@ import img4 from "../../assets/silo.png";
 
 function Home() {
 
-    const { sessions, error: sessionError } = getSession();
-    const { latestSessions, error: latestSessionError, movieTime } = useLatestSession();
+    const { sessions } = getSession();
+    const { movies } = useGetAllMovies();
+    const { latestSessions,  movieTime } = useLatestSession();
 
 
 
@@ -148,7 +151,15 @@ function Home() {
 
                 </div>
 
-                    <Footer/>
+                <SectionTitle className="pt-24" title="All - Movies" />
+
+                <div className="flex flex-wrap justify-center items-center gap-3 py-2">
+                    {movies.map((movie) => {
+                        return <MoviesCard className="w-[23%]" key={movie._id} img={movie.picture} title={movie.title.length > 10 ? `${movie.title.slice(0, 10)}...` : movie.title} category={movie.categories.length > 0 ? movie.categories[0].name : 'No Category'} movieId={movie._id}/>
+                    })}
+                </div>
+
+                <Footer/>
 
             </div>
         </>

@@ -6,6 +6,7 @@ import SignUp from "./Pages/Auth/SignUp.jsx";
 import ForgetPassword from "./Pages/Auth/ForgetPassword.jsx";
 import Home from "./Pages/Home/Home.jsx";
 import Dashboard from "./Pages/Admin/Dashboard.jsx"
+import SessionDetails from "./Pages/Details/SessionDetails.jsx";
 import MovieDetails from "./Pages/Details/MovieDetails.jsx";
 import Reservation from "./Pages/Reservations/Reservation.jsx";
 import MyReservation from "./Pages/Reservations/MyReservation.jsx";
@@ -29,6 +30,7 @@ function App() {
               <Route path="/UseForgetPassword" element={<ForgetPassword />} />
               <Route path="/NewPassword/:token" element={<NewPassword />} />
               <Route path="/home" element={<Home />} />
+              <Route path="/sessionDetails/:id" element={<SessionDetails />} />
               <Route path="/movieDetails/:id" element={<MovieDetails />} />
               <Route path="/reservation" element={<Reservation />} />
               <Route path="/myReservation" element={<MyReservation />} />
