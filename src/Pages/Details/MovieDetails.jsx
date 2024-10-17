@@ -3,6 +3,7 @@ import NavBar from "../../components/NavBar.jsx";
 import Video from "../../components/Video.jsx";
 import Rating from "../../components/Rating.jsx";
 import CommentsCard from "../../components/CommentsCard.jsx";
+import CommentsInput from "../../components/CommentsInput.jsx";
 import walid from "../../assets/walid.png";
 import SectionTitle from "../../components/SectionTitle.jsx";
 import Footer from "../../components/Footer.jsx"
@@ -10,6 +11,7 @@ import {Link, useParams} from "react-router-dom";
 import useGetMovieDetails from "../../Hooks/Movie/useGetMovieDetails.js";
 import useGetAllMovies from "../../Hooks/Movie/getAllMovies.js";
 import MoviesCard from "../../components/Movie/moviesCard.jsx";
+
 
 function MovieDetails() {
     const { id } = useParams();
@@ -141,20 +143,25 @@ function MovieDetails() {
                     </svg>
                 </div>
 
-                <div className={`overflow-hidden transition-[max-height] duration-700 ease-in-out ${visible ? 'max-h-[800px] overflow-y-auto' : 'max-h-0'}`}>
+                <div
+                    className={`overflow-hidden transition-[max-height] duration-700 ease-in-out ${visible ? 'max-h-[800px] overflow-y-auto' : 'max-h-0'}`}>
                     {movie.comments && movie.comments.length > 0 ? (
                         movie.comments.map((comment, index) => (
                             <CommentsCard
                                 key={index}
                                 className="py-4"
                                 comment={comment.comment}
-                                client={comment.client} // Assuming client is a string, adjust if it's an object
-                                img={walid} // Replace with actual client image if available
+                                client={comment.client.name}
+                                img={walid}
                             />
                         ))
                     ) : (
                         <p className="text-white font-medium">No comments available.</p>
                     )}
+
+                    <CommentsInput movieId={id} />
+
+
                 </div>
                 <SectionTitle title="You may also like"/>
 
@@ -162,7 +169,10 @@ function MovieDetails() {
 
                     <div className="flex flex-wrap justify-center items-center gap-5 py-2">
                         {movies.map((movie) => {
-                          return <MoviesCard className={'w-[280px]'} key={movie._id} img={movie.picture} movieId={movie._id} category={movie.categories.length > 0 ? movie.categories[0].name : 'No Category'} title={movie.title.length > 10 ? `${movie.title.slice(0, 10)}...` : movie.title}  />
+                            return <MoviesCard className={'w-[280px]'} key={movie._id} img={movie.picture}
+                                               movieId={movie._id}
+                                               category={movie.categories.length > 0 ? movie.categories[0].name : 'No Category'}
+                                               title={movie.title.length > 10 ? `${movie.title.slice(0, 10)}...` : movie.title}/>
                         })}
                     </div>
 
