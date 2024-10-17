@@ -11,11 +11,18 @@ import {Link, useParams} from "react-router-dom";
 import useGetMovieDetails from "../../Hooks/Movie/useGetMovieDetails.js";
 import useGetAllMovies from "../../Hooks/Movie/getAllMovies.js";
 import MoviesCard from "../../components/Movie/moviesCard.jsx";
+import {useEffect} from "react";
+
 
 
 function MovieDetails() {
     const { id } = useParams();
-    const { movie, loading, error } = useGetMovieDetails(id);
+    const { movie, loading, error, fetchMovieDetails } = useGetMovieDetails(id);
+
+    useEffect(() => {
+        fetchMovieDetails(); // Fetch movie details on component load
+    }, [id]);
+
 
     const {movies} = useGetAllMovies();
 
@@ -45,6 +52,9 @@ function MovieDetails() {
     if (!movie) {
         return <div className="text-white">Movie not found.</div>;
     }
+
+    const currentUser = localStorage.getItem("userId")
+    console.log(currentUser)
 
 
     return (
@@ -153,13 +163,18 @@ function MovieDetails() {
                                 comment={comment.comment}
                                 client={comment.client.name}
                                 img={walid}
+                                movieId={movie._id}
+                                commentId={comment._id}
+                                fetchMovieDetails={fetchMovieDetails}
+                                loggedUser={currentUser}
+                                ownCommentId={comment.client._id}
                             />
                         ))
                     ) : (
                         <p className="text-white font-medium">No comments available.</p>
                     )}
 
-                    <CommentsInput movieId={id} />
+                    <CommentsInput movieId={id} fetchMovieDetails={fetchMovieDetails}/>
 
 
                 </div>

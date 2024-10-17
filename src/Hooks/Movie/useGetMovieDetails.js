@@ -6,8 +6,6 @@ function useGetMovieDetails(movieId) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        if (!movieId) return;
 
         const fetchMovieDetails = async () => {
             try {
@@ -20,10 +18,14 @@ function useGetMovieDetails(movieId) {
             }
         };
 
-        fetchMovieDetails();
-    }, [movieId, movie]);
+        useEffect(() => {
+            if(movieId){
+                fetchMovieDetails();
+            }
+        }, [movieId]);
 
-    return { movie, loading, error };
+
+    return { movie, loading, error, fetchMovieDetails };
 }
 
 export default useGetMovieDetails;

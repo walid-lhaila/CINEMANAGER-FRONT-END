@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import useAddComment from "../Hooks/Comment/useAddComment.jsx";
+import useAddComment from "../Hooks/Comment/useAddComment.js";
 
-function CommentsInput({movieId}) {
+function CommentsInput({movieId, fetchMovieDetails}) {
 
     const { addComment } = useAddComment();
 
@@ -11,6 +11,7 @@ function CommentsInput({movieId}) {
         if(comment.trim() === '') return;
 
         await addComment(movieId, comment);
+        fetchMovieDetails();
         setComment('');
     }
 
