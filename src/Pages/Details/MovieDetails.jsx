@@ -144,7 +144,7 @@ function MovieDetails() {
                 </div>
 
                 <div
-                    className={`overflow-hidden transition-[max-height] duration-700 ease-in-out ${visible ? 'max-h-[800px] overflow-y-auto' : 'max-h-0'}`}>
+                    className={`overflow-hidden scrollbar-hide transition-[max-height] duration-700 ease-in-out ${visible ? 'max-h-[800px] overflow-y-auto' : 'max-h-0'}`}>
                     {movie.comments && movie.comments.length > 0 ? (
                         movie.comments.map((comment, index) => (
                             <CommentsCard

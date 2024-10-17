@@ -21,7 +21,7 @@ function useGetMovieDetails(movieId) {
         };
 
         fetchMovieDetails();
-    }, [movieId]);
+    }, [movieId, movie]);
 
     return { movie, loading, error };
 }
