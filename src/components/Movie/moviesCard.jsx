@@ -1,6 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
+import useFavorite from "../../Hooks/Favorite/useFavorite.js";
 function MoviesCard({img, title, category, created, className, movieId}) {
+    const { addFavorite, deleteFavorite } = useFavorite();
+    const [isFavorite, setIsFavorite] = useState(false);
+
+    const handleToggleFavorite = async () => {
+        if (isFavorite) {
+            await deleteFavorite(movieId);
+            setIsFavorite(false);
+        } else {
+            await addFavorite(movieId);
+            setIsFavorite(true);
+        }
+    };
+
     return (
         <div className={`card relative py-2 w-[20%] ${className}`}>
             <div className="cursor-pointer flex justify-center  duration-700">
@@ -32,9 +46,42 @@ function MoviesCard({img, title, category, created, className, movieId}) {
                     </div>
                     <div className="flex gap-3 mt-1">
                         <Link to={`/movieDetails/${movieId}`}>
-                             <button className="text-white bg-amber-500 text-sm px-3 py-1 hover:text-white hover:bg-orange-500 duration-500 font-medium">Détails</button>
+                            <button
+                                className="text-white bg-amber-500 text-sm px-3 py-2 hover:text-white hover:bg-orange-500 duration-500 font-medium rounded">Détails
+                            </button>
                         </Link>
-                        <button className="text-gray-500 bg-gray-200 text-sm px-3 py-1 hover:text-black hover:bg-white border border-white hover:border hover:border-black duration-500 font-medium">Get Ticket</button>
+                        <button
+                            onClick={handleToggleFavorite}
+                            className={`bg-black group text-sm px-3 py-1 hover:text-black hover:bg-white border border-white hover:border hover:border-black duration-500 font-medium rounded`}
+                        >
+                            {isFavorite ? (
+                                <svg
+                                    className="w-6 h-6 text-amber-400  group-hover:text-text-white duration-300"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        d="m12.75 20.66 6.184-7.098c2.677-2.884 2.559-6.506.754-8.705-.898-1.095-2.206-1.816-3.72-1.855-1.293-.034-2.652.43-3.963 1.442-1.315-1.012-2.678-1.476-3.973-1.442-1.515.04-2.825.76-3.724 1.855-1.806 2.201-1.915 5.823.772 8.706l6.183 7.097c.19.216.46.34.743.34a.985.985 0 0 0 .743-.34Z"/>
+                                </svg>
+                            ) : (
+                                <svg
+                                    className="w-6 h-6 text-white group-hover:text-amber-400 duration-300"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        d="m12.75 20.66 6.184-7.098c2.677-2.884 2.559-6.506.754-8.705-.898-1.095-2.206-1.816-3.72-1.855-1.293-.034-2.652.43-3.963 1.442-1.315-1.012-2.678-1.476-3.973-1.442-1.515.04-2.825.76-3.724 1.855-1.806 2.201-1.915 5.823.772 8.706l6.183 7.097c.19.216.46.34.743.34a.985.985 0 0 0 .743-.34Z"/>
+                                </svg>
+                            )}
+                        </button>
                     </div>
                 </div>
             </div>
