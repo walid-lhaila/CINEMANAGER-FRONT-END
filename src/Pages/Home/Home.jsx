@@ -13,7 +13,7 @@ import img1 from "../../assets/manifest.png";
 import img2 from "../../assets/fubar.png";
 import img3 from "../../assets/flash.png";
 import img4 from "../../assets/silo.png";
-
+import Search from "../../components/Search.jsx";
 
 function Home() {
 
@@ -91,8 +91,11 @@ function Home() {
 
             </div>
 
-            <div className="w-[65%] mx-auto pt-32">
-                <h1 className="text-white font-bold font-serif text-2xl py-3">Recently Updated</h1>
+            <div className="w-[65%] mx-auto pt-24">
+
+                <Search />
+
+                <h1 className="text-white font-bold font-serif text-2xl py-10">Recently Updated</h1>
                 <div className="flex justify-center items-center gap-8 py-8">
 
                     <div className="flex gap-4 justify-center items-center w-[30%] h-[110px] ">
@@ -133,29 +136,37 @@ function Home() {
 
                 </div>
 
-                <SectionTitle title="Latest Movies" />
+                <SectionTitle title="Latest Movies"/>
 
                 <div className="flex justify-center items-center gap-8 py-2">
                     {latestSessions && latestSessions.map((session) => (
-                        <LatestCard key={session._id}  imgSrc={session.movieId.picture} title={session.movieId.title.length > 10 ? `${session.movieId.title.slice(0, 10)}...` : session.movieId.title} time={movieTime(session.startTime, session.endTime)} price={session.price} sessionId={session._id}/>
+                        <LatestCard key={session._id} imgSrc={session.movieId.picture}
+                                    title={session.movieId.title.length > 10 ? `${session.movieId.title.slice(0, 10)}...` : session.movieId.title}
+                                    time={movieTime(session.startTime, session.endTime)} price={session.price}
+                                    sessionId={session._id}/>
                     ))}
                 </div>
 
-                <SectionTitle className="pt-24" title="Available Session - Movies" />
+                <SectionTitle className="pt-24" title="Available Session - Movies"/>
 
                 <div className="flex flex-wrap justify-center items-center gap-10 py-2">
 
                     {sessions.map((session) => (
-                        <MovieCard key={session._id} img={session.movieId.picture} title={session.movieId.title.length > 10 ? `${session.movieId.title.slice(0, 10)}...` : session.movieId.title} sessionId={session._id} />
+                        <MovieCard key={session._id} img={session.movieId.picture}
+                                   title={session.movieId.title.length > 10 ? `${session.movieId.title.slice(0, 10)}...` : session.movieId.title}
+                                   sessionId={session._id}/>
                     ))}
 
                 </div>
 
-                <SectionTitle className="pt-24" title="All - Movies" />
+                <SectionTitle className="pt-24" title="All - Movies"/>
 
                 <div className="flex flex-wrap justify-center items-center gap-3 py-2">
                     {movies.map((movie) => {
-                        return <MoviesCard className="w-[23%]" key={movie._id} img={movie.picture} title={movie.title.length > 10 ? `${movie.title.slice(0, 10)}...` : movie.title} category={movie.categories.length > 0 ? movie.categories[0].name : 'No Category'} movieId={movie._id}/>
+                        return <MoviesCard className="w-[23%]" key={movie._id} img={movie.picture}
+                                           title={movie.title.length > 10 ? `${movie.title.slice(0, 10)}...` : movie.title}
+                                           category={movie.categories.length > 0 ? movie.categories[0].name : 'No Category'}
+                                           movieId={movie._id}/>
                     })}
                 </div>
 
