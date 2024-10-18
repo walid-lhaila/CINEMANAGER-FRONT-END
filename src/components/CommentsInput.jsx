@@ -12,9 +12,8 @@ function CommentsInput({ movieId, fetchMovieDetails, editingComment, setEditingC
        if(editingComment.trim() === '') return;
 
         if (editingCommentId) {
-            // Update existing comment
             await updateComment(movieId, editingCommentId, editingComment);
-            setEditingCommentId(null); // Reset editing ID
+            setEditingCommentId(null);
         } else {
             // Add new comment
             await addComment(movieId, editingComment);
@@ -25,7 +24,7 @@ function CommentsInput({ movieId, fetchMovieDetails, editingComment, setEditingC
     };
 
     useEffect(() => {
-        setEditingComment(editingComment); // Update the input with the editing comment
+        setEditingComment(editingComment);
     }, [editingComment]);
 
     return (

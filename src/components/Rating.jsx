@@ -1,9 +1,18 @@
 import React, {useState} from 'react';
 import Rate from "react-rating";
+import useRating from "../Hooks/Rating/useRating.jsx";
 
-function Rating({className, onClick}) {
+function Rating({className, movieId,  userId, onClose}) {
 
-    const [rating, setRating] = useState(0);
+    const { rating, setRating, submitRating, error } = useRating(movieId, userId);
+
+    const handleRate = async () => {
+            await submitRating();
+            if(!error) {
+                onClose();
+            }
+    };
+
     const emptyStar = (
         <svg className="w-10 h-10 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
              width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -33,8 +42,8 @@ function Rating({className, onClick}) {
                     <span className="text-white font-medium hidden">{rating} Stars</span>
                 </div>
                 <div className="flex justify-center items-center gap-3 py-4">
-                    <button className="text-black bg-amber-500 hover:bg-amber-400 duration-300 font-serif font-medium px-10 py-2 rounded">Rate</button>
-                    <button onClick={onClick} className="text-black bg-gray-300 hover:bg-gray-100 duration-300 font-serif font-medium px-10 py-2 rounded">Cancel</button>
+                    <button onClick={handleRate} className="text-black bg-amber-500 hover:bg-amber-400 duration-300 font-serif font-medium px-10 py-2 rounded">Rate</button>
+                    <button onClick={onClose} className="text-black bg-gray-300 hover:bg-gray-100 duration-300 font-serif font-medium px-10 py-2 rounded">Cancel</button>
                 </div>
             </div>
         </div>
