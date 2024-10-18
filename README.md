@@ -1,7 +1,8 @@
 # Cine Manager App - Frontend
 
 ## Contexte du projet
-CinéManager est une application de gestion de cinéma dont l'objectif principal est de permettre aux utilisateurs de réserver des séances de cinéma en ligne. Ce projet se concentre sur le développement du frontend en utilisant React.
+CinéManager est une application de gestion de cinéma qui évolue pour inclure une plateforme de streaming en ligne, permettant aux utilisateurs de réserver des séances de cinéma et de visionner des films en VOD (vidéo à la demande). Ce projet se concentre sur le développement du frontend en utilisant React.
+
 
 ## Étapes du projet
 1. **Création de l'application** : Mise en place d'une nouvelle application React en utilisant Create React App.
@@ -30,18 +31,6 @@ Ce projet utilise Docker et Docker Compose pour simplifier le déploiement. Le f
 - Communication efficace avec le backend.
 - Intégration de Docker et documentation des étapes de configuration.
 
-## Modalités pédagogiques
-- **Travail individuel** : Projet réalisé en autonomie.
-- **Deadline** : 7 jour.
-
-## Modalités d'évaluation
-Le projet sera évalué en fonction des critères suivants :
-- Fonctionnalités : Inscription, connexion, réinitialisation du mot de passe, déconnexion.
-- Interface utilisateur : Convivialité et design.
-- Communication avec le backend : Fiabilité des appels API.
-- Performance : Temps de réponse et charge de travail.
-- Sécurité : Tests d'authentification et de gestion de sessions.
-- Documentation : Qualité des commentaires et des guides d'utilisation.
 
 ## Documentation
 La documentation inclut les étapes suivies, les choix de conception, et la configuration de Docker. Un rapport détaillé est également fourni expliquant l'intégration de Docker dans le projet.
