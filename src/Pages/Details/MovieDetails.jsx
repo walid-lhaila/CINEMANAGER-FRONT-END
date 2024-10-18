@@ -39,6 +39,14 @@ function MovieDetails() {
         setVisible(!visible);
     }
 
+    const [editingComment, setEditingComment] = useState('');
+    const [editingCommentId, setEditingCommentId] = useState(null);
+
+    const handleEditComment = (comment, commentId) => {
+        setEditingComment(comment);
+        setEditingCommentId(commentId);
+    }
+
     if (loading) {
         return <div className="text-white">Loading...</div>;
     }
@@ -168,13 +176,14 @@ function MovieDetails() {
                                 fetchMovieDetails={fetchMovieDetails}
                                 loggedUser={currentUser}
                                 ownCommentId={comment.client._id}
+                                onEditComment={() => handleEditComment(comment.comment, comment._id)}
                             />
                         ))
                     ) : (
                         <p className="text-white font-medium">No comments available.</p>
                     )}
 
-                    <CommentsInput movieId={id} fetchMovieDetails={fetchMovieDetails}/>
+                    <CommentsInput movieId={id} fetchMovieDetails={fetchMovieDetails} editingComment={editingComment} setEditingComment={setEditingComment} editingCommentId={editingCommentId} setEditingCommentId={setEditingCommentId}/>
 
 
                 </div>

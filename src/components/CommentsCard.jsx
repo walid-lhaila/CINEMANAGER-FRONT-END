@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import useDeleteComment from "../Hooks/Comment/useDeleteComment.js";
 
 
-function CommentsCard({img, client, comment, className, movieId, commentId, fetchMovieDetails, loggedUser, ownCommentId}) {
+function CommentsCard({img, client, comment, className, movieId, commentId, fetchMovieDetails, loggedUser, ownCommentId, onEditComment}) {
 
 
     const [isVisible, setIsVisible] = useState(false);
@@ -40,7 +40,7 @@ function CommentsCard({img, client, comment, className, movieId, commentId, fetc
             {isVisible && isUserComment && (
             <div id="btns" className="bg-black border-white rounded-md border flex justify-center gap-3 w-28 h-14 absolute right-8">
                     <>
-                        <button  className="bg-blue-200 px-2 h-[45px] mt-1 rounded group hover:bg-blue-600 duration-200">
+                        <button onClick={() => onEditComment()} className="bg-blue-200 px-2 h-[45px] mt-1 rounded group hover:bg-blue-600 duration-200">
                             <svg className="w-6 h-6 text-gray-800 dark:text-blue-500 group-hover:text-white duration-200" aria-hidden="true"
                                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
