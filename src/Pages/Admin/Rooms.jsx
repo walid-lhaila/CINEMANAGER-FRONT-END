@@ -12,6 +12,10 @@ function Rooms() {
     const handleAddedRoom = (newRoom) => {
         setRooms((prevRooms) => [...prevRooms, newRoom]);
     }
+
+    const handelDeleteRoom = (deletedId) => {
+        setRooms((prevRooms)  => prevRooms.filter(room => room._id !== deletedId))
+    }
     return (
         <div className="flex bg-white">
             {showForm &&
@@ -39,7 +43,7 @@ function Rooms() {
 
                     <div className="flex flex-wrap justify-center items-center gap-3 px-10 py-5">
                         {rooms.map((room) => (
-                            <RoomCard key={room._id} name={room.name} />
+                            <RoomCard key={room._id} name={room.name} roomId={room._id} onDelete={handelDeleteRoom} />
                     ))}
                     </div>
                 </div>

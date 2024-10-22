@@ -14,7 +14,8 @@ function DeleteCategory() {
                 }
                 );
             if(response.status === 200) {
-                toast.success("Category Deleted Successfully")
+                toast.success("Category Deleted Successfully");
+                return categoryId;
             }
         } catch (error) {
             toast.error("Failed To Delete Category")

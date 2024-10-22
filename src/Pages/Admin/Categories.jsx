@@ -9,8 +9,16 @@ function Categories() {
 
     const [showForm, setShowForm] = useState(false);
 
-    const { showSuccessMessage, success, addCategory } = useAddCategory();
-    const { categories} = useGetAllCategories();
+    const { showSuccessMessage, success } = useAddCategory();
+    const { categories, setCategories} = useGetAllCategories();
+
+    const handleAddCategory = (newCategory) => {
+        setCategories((prevCategory) => [...prevCategory, newCategory]);
+    }
+
+    const handleDeleteCategory = (deleteId) => {
+        setCategories((prevCategories) => prevCategories.filter(category => category._id !== deleteId))
+    }
 
 
 
@@ -46,11 +54,11 @@ function Categories() {
                 </div>
                 <div className="flex flex-wrap justify-start items-center gap-3 w-[96%] mx-auto ">
                     {categories.map((category) => (
-                        <CategoryCard key={category._id} name={category.name} categoryId={category._id}/>
+                        <CategoryCard key={category._id} name={category.name} categoryId={category._id} onDelete={handleDeleteCategory}/>
                     ))}
                 </div>
                 {showForm &&
-                    <CategoryForm removeForm={() => setShowForm(false)} addCategory={addCategory()}/>
+                    <CategoryForm removeForm={() => setShowForm(false)} onAddCategory={handleAddCategory}/>
                 }
             </div>
         </div>

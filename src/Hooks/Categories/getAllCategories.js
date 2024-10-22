@@ -22,7 +22,7 @@ function GetAllCategories() {
             getCategories();
     }, []);
 
-    return {categories};
+    return {categories, setCategories};
 }
 
 export default GetAllCategories;

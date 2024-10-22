@@ -30,6 +30,7 @@ function useAddCategory() {
             if (response.status === 200) {
                 setSuccess('Category Created Successfully!');
                 removeForm();
+                return response.data.data;
             }
         } catch (error) {
             console.error('Cannot Create Category');

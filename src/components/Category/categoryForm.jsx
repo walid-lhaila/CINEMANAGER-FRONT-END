@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import useAddCategory from "../../Hooks/Categories/addCategory.js";
 
 
-function CategoryForm({removeForm}) {
+function CategoryForm({removeForm, onAddCategory}) {
     const [categoryName, setCategoryName] = useState('');
     const {addCategory} = useAddCategory();
 
@@ -10,9 +10,19 @@ function CategoryForm({removeForm}) {
         setCategoryName(event.target.value);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        addCategory(categoryName, removeForm);
+        try {
+            const newCategoy = await addCategory(categoryName, removeForm);
+            if(newCategoy && newCategoy._id) {
+                onAddCategory(newCategoy);
+            } else {
+                console.error("Room data is incomplete", newCategoy);
+            }
+        } catch (error) {
+            console.error("Error Adding Room", error);
+        }
+
     };
     const handleFormClick = (event) => {
         event.stopPropagation();
