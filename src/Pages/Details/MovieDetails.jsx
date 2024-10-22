@@ -21,6 +21,7 @@ function MovieDetails() {
     const [hasRated, setHasRated] = useState(false);
 
 
+
     useEffect(() => {
         fetchMovieDetails();
     }, [id]);
@@ -39,6 +40,7 @@ function MovieDetails() {
 
     //RATING
     const [showRatingCard, setShowRatingCard] = useState(false);
+
     const handleFinishVideo = () => {
         console.log("video has finished");
         if (!hasRated) {
@@ -84,7 +86,7 @@ function MovieDetails() {
             <div className="w-[65%] mx-auto pt-14">
                 {movie && (
                     <>
-                        <Video onVideoEnd={handleFinishVideo} src={movie.trailer}  />
+                        <Video key={movie.trailer} src={movie.trailer} onVideoEnd={handleFinishVideo}   />
 
                         <div id={'movieDetails'} className="flex  gap-10 pt-24">
                             <img className="h-[556px] w-[352px] rounded" src={movie.picture}  alt=""/>

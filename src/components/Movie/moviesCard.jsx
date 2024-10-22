@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import useFavorite from "../../Hooks/Favorite/useFavorite.js";
+
 function MoviesCard({img, title, category, created, className, movieId}) {
     const { addFavorite, deleteFavorite } = useFavorite();
     const [isFavorite, setIsFavorite] = useState(false);
@@ -14,6 +15,7 @@ function MoviesCard({img, title, category, created, className, movieId}) {
             setIsFavorite(true);
         }
     };
+
 
     return (
         <div className={`card relative py-2 w-[20%] ${className}`}>
@@ -37,15 +39,15 @@ function MoviesCard({img, title, category, created, className, movieId}) {
                             <svg className="w-4 h-4 text-amber-500" aria-hidden="true"
                                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                  viewBox="0 0 24 24">
-                                <path fill-rule="evenodd"
+                                <path fillRule="evenodd"
                                       d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v4a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414L13 11.586V8Z"
-                                      clip-rule="evenodd"/>
+                                      clipRule="evenodd"/>
                             </svg>
                             <p className="text-xs text-gray-500">{created}</p>
                         </div>
                     </div>
                     <div className="flex gap-3 mt-1">
-                        <Link to={`/movieDetails/${movieId}`}>
+                        <Link to={`/movieDetails/${movieId}`} >
                             <button
                                 className="text-white bg-amber-500 text-sm px-3 py-2 hover:text-white hover:bg-orange-500 duration-500 font-medium rounded">Détails
                             </button>

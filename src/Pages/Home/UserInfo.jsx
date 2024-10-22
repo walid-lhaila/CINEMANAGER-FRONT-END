@@ -36,6 +36,7 @@ function UserInfo() {
                 </div>
                 <div className="flex w-[50%] mx-auto gap-5 pt-8">
                     <Button text="Submit" className="" type="submit"></Button>
+
                     <Button text="cancel" className="bg-gray-200 hover:bg-white duration-300" type="submit"></Button>
                 </div>
             </form>
