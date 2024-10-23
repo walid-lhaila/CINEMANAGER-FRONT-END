@@ -9,7 +9,7 @@ function GetAllCategories() {
 
             const getCategories = async () => {
                 try {
-                    const response = await axios.get('http://localhost:2003/api/getAllCategories', {
+                    const response = await axios.get(`${import.meta.env.VITE_APP_URL}/api/getAllCategories`, {
                         headers: {
                             Authorization: `bearer ${token}`,
                         }

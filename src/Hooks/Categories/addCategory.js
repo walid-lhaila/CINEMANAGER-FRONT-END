@@ -19,7 +19,7 @@ function useAddCategory() {
         const token = localStorage.getItem('token');
         try {
             const response = await axios.post(
-                'http://localhost:2003/api/createdCategory',
+                `${import.meta.env.VITE_APP_URL}/api/createdCategory`,
                 { name: categoryName },
                 {
                     headers: {

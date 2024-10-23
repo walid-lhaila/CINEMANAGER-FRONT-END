@@ -7,7 +7,7 @@ function UseAddRoom() {
     const addRoom = async (roomName, roomSeats, roomCapacity, removeRoom) => {
         const token = localStorage.getItem("token");
         try {
-            const response = await axios.post('http://localhost:2003/api/createHall',
+            const response = await axios.post(`${import.meta.env.VITE_APP_URL}/api/createHall`,
                 {
                  name: roomName,
                  seats: roomSeats,

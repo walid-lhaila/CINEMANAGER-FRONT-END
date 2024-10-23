@@ -11,7 +11,7 @@ function UseNewPassword() {
         const handleSubmit = async (e) => {
             e.preventDefault();
             try{
-                await axios.post(`http://localhost:2003/api/reset-password/${token}`, {
+                await axios.post(`${import.meta.env.VITE_APP_URL}/api/reset-password/${token}`, {
                     newPassword
                 });
                 navigate('/signin');

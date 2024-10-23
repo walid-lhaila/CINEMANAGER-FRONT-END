@@ -7,7 +7,7 @@ function UseAddComment() {
     const addComment = async (movieId, comment) => {
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.post(`http://localhost:2003/api/createComment/${movieId}`,
+            const response = await axios.post(`${import.meta.env.VITE_APP_URL}/api/createComment/${movieId}`,
                 {comment},
                 {
                     headers: {

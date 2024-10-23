@@ -9,7 +9,7 @@ function UseGetAllRooms() {
                 useEffect(() => {
                     const getAllRooms = async () =>  {
                         const token = localStorage.getItem("token");
-                        const response = await axios.get('http://localhost:2003/api/getAllHall',
+                        const response = await axios.get(`${import.meta.env.VITE_APP_URL}/api/getAllHall`,
                             {
                                 headers: {
                                     Authorization: `Bearer ${token}`,

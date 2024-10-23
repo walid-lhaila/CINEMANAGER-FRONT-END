@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import SidBar from "../../components/Admin/SidBar.jsx";
 import Header from "../../components/Admin/Header.jsx";
 import RoomForm from "../../components/Room/roomForm.jsx";
@@ -7,7 +7,13 @@ import useGetAllRooms from "../../Hooks/Room/useGetAllRooms.js";
 
 function Rooms() {
     const [showForm, setShowForm] = useState(false);
+    const [currentRoom, setCurrentRoom] = useState(null);
     const {rooms, setRooms} = useGetAllRooms();
+
+    const handleCloseForm = () => {
+        setShowForm(false);
+        setCurrentRoom(null); // Reset the currentRoom state when closing the form
+    };
 
     const handleAddedRoom = (newRoom) => {
         setRooms((prevRooms) => [...prevRooms, newRoom]);
@@ -16,11 +22,22 @@ function Rooms() {
     const handelDeleteRoom = (deletedId) => {
         setRooms((prevRooms)  => prevRooms.filter(room => room._id !== deletedId))
     }
+
+    const handleUpdateRoom = (roomId) => {
+        const roomToUpdate = rooms.find(room => room._id === roomId);
+        setCurrentRoom(roomToUpdate);
+        setShowForm(true);
+    }
+
+
+
+
+
     return (
         <div className="flex bg-white">
-            {showForm &&
-                <RoomForm removeForm={() => setShowForm(false)} onAddRoom={handleAddedRoom}/>
-            }
+            {showForm && (
+                <RoomForm removeForm={handleCloseForm} onAddRoom={handleAddedRoom}  room={currentRoom} isUpdate={!!currentRoom}/>
+            )}
 
             <SidBar/>
             <div className="w-full">
@@ -43,7 +60,7 @@ function Rooms() {
 
                     <div className="flex flex-wrap justify-center items-center gap-3 px-10 py-5">
                         {rooms.map((room) => (
-                            <RoomCard key={room._id} name={room.name} roomId={room._id} onDelete={handelDeleteRoom} />
+                            <RoomCard key={room._id} name={room.name} roomId={room._id} onDelete={handelDeleteRoom} onUpdate={handleUpdateRoom}/>
                     ))}
                     </div>
                 </div>

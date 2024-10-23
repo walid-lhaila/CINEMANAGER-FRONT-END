@@ -32,7 +32,7 @@ const AddMovie = () => {
                 formDataToSubmit.append("trailer", formData.trailer);
 
                 try {
-                    const response = await axios.post('http://localhost:2003/api/createMovie', formData, {
+                    const response = await axios.post(`${import.meta.env.VITE_APP_URL}/api/createMovie`, formData, {
                         headers: {
                             Authorization: `bearer ${token}`,
                             'Content-Type': 'multipart/form-data',

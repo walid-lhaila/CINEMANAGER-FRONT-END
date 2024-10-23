@@ -34,7 +34,7 @@ function UseForgetPassword() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:2003/api/password-reset', {email});
+            await axios.post(`${import.meta.env.VITE_APP_URL}/api/password-reset`, {email});
             setSuccess('Link Sent To Your Email Successfully');
         } catch (error) {
             setError("Error Sending Password Reset Email, Try Again");

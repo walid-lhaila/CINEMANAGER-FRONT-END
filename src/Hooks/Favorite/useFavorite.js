@@ -5,7 +5,7 @@ const useFavorite = () => {
     const addFavorite = async (movieId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.post('http://localhost:2003/api/addFavorite',
+            const response = await axios.post(`${import.meta.env.VITE_APP_URL}/api/addFavorite`,
                 { movieId },
                 {
                     headers: {
@@ -23,7 +23,7 @@ const useFavorite = () => {
     const deleteFavorite = async (movieId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.delete('http://localhost:2003/api/deleteFavorite', {
+            const response = await axios.delete(`${import.meta.env.VITE_APP_URL}/api/deleteFavorite`, {
                 data: { movieId },
                 headers: {
                     Authorization: `Bearer ${token}`,

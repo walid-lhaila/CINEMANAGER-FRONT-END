@@ -6,7 +6,7 @@ function UseDeleteRoom() {
     const deleteRoom = async (roomId) => {
         const token = localStorage.getItem("token");
         try {
-            const response = await axios.delete(`http://localhost:2003/api/deleteHall/${roomId}`,
+            const response = await axios.delete(`${import.meta.env.VITE_APP_URL}/api/deleteHall/${roomId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,

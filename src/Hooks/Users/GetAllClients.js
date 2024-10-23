@@ -8,7 +8,7 @@ function GetAllClients() {
           const getAllClients = () => {
               const token = localStorage.getItem("token");
               console.log(token);
-              axios.get('http://localhost:2003/api/getAllClients', {
+              axios.get(`${import.meta.env.VITE_APP_URL}/api/getAllClients`, {
                   headers: {
                       'Cache-Control': 'no-cache',
                       Authorization: `bearer ${token}`,

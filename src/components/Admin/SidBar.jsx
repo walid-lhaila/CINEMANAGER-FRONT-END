@@ -48,7 +48,7 @@ function SidBar() {
                         <li className={`group-hover:text-amber-500 duration-100 cursor-pointer font-medium font-serif text-lg ${activeItem === 'rooms' ? 'text-amber-500' : ''}`}>Rooms</li>
                     </Link>
 
-                    <div onClick={() => handleClick('session')}
+                    <Link to="/admin/sessions" onClick={() => handleClick('session')}
                          className={`flex justify-start items-center gap-4  group cursor-pointer hover:bg-gray-100 duration-100 py-3 px-2 rounded mt-2 ${activeItem === 'session' ? 'bg-gray-100' : ''}`}>
                         <svg
                             className={`w-8 h-8 text-gray-800  group-hover:text-amber-500 duration-100 cursor-pointer ${activeItem === 'session' ? 'text-amber-500' : ''} `}
@@ -58,7 +58,7 @@ function SidBar() {
                                   d="M12 15v5m-3 0h6M4 11h16M5 15h14a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1Z"/>
                         </svg>
                         <li className={`group-hover:text-amber-500 duration-100 cursor-pointer font-medium font-serif text-lg ${activeItem === 'session' ? 'text-amber-500' : ''}`}>Sessions</li>
-                    </div>
+                    </Link>
 
                     <Link to="/admin/addCategory" onClick={() => handleClick('category')}
                          className={`flex justify-start items-center gap-4  group cursor-pointer hover:bg-gray-100 duration-100 py-3 px-2 rounded mt-2 ${activeItem === 'category' ? 'bg-gray-100' : ''}`}>

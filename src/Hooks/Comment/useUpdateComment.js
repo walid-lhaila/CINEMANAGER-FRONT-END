@@ -6,7 +6,7 @@ function UseUpdateComment() {
     const updateComment = async (movieId, commentId, updatedComment) => {
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.put(`http://localhost:2003/api/updateComment/${movieId}/${commentId}`,
+            const response = await axios.put(`${import.meta.env.VITE_APP_URL}/api/updateComment/${movieId}/${commentId}`,
                 { comment: updatedComment},
                 {
                     headers: {

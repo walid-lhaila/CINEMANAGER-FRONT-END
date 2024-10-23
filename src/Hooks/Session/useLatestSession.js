@@ -8,7 +8,7 @@ const useLatestSession = () => {
     useEffect(() => {
         const fetchLatestSessions = async () => {
             try {
-                const response = await axios.get('http://localhost:2003/api/getLatestSessions', {
+                const response = await axios.get(`${import.meta.env.VITE_APP_URL}/api/getLatestSessions`, {
                     headers: {
                         'Cache-Control': 'no-cache'
                     }

@@ -7,7 +7,7 @@ function DeleteMovie() {
     const deleteMovie = async (movieId) =>  {
         const token = localStorage.getItem("token");
         try {
-            const response = await axios.delete(`http://localhost:2003/api/deleteMovie/${movieId}`,
+            const response = await axios.delete(`${import.meta.env.VITE_APP_URL}/api/deleteMovie/${movieId}`,
                 {
                     headers: {
                         Authorization: `bearer ${token}`,

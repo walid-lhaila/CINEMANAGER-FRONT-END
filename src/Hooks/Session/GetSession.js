@@ -10,7 +10,7 @@ function GetSession() {
         useEffect(() => {
             const getSessions = async () => {
                 try {
-                    const response = await axios.get('http://localhost:2003/api/getAvailableSession');
+                    const response = await axios.get(`${import.meta.env.VITE_APP_URL}/api/getAvailableSession`);
                     setSessions(response.data.getSession);
                 } catch (err) {
                     setError("Failed to get sessions.");

@@ -20,7 +20,7 @@ function UseSignUp() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:2003/api/createClient', {
+            const response = await axios.post(`${import.meta.env.VITE_APP_URL}/api/createClient`, {
                 name: formData.fullName,
                 email: formData.email,
                 password: formData.password

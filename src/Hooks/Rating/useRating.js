@@ -10,7 +10,7 @@ function UseRating(movieId) {
     const submitRating = async () => {
         const token = localStorage.getItem("token");
         try {
-            const response = await axios.post(`http://localhost:2003/api/addRating/${movieId}`,
+            const response = await axios.post(`${import.meta.env.VITE_APP_URL}/api/addRating/${movieId}`,
                 {rating},
                 {
                     headers: {

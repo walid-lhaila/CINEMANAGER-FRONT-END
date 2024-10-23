@@ -12,7 +12,7 @@ const useSearchMovies = () => {
         setError(null);
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.get('http://localhost:2003/api/search', {
+            const response = await axios.get(`${import.meta.env.VITE_APP_URL}/api/search`, {
                 params: { title, category },
                 headers: {
                     Authorization: `Bearer ${token}`,

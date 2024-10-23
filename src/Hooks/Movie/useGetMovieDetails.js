@@ -9,7 +9,7 @@ function useGetMovieDetails(movieId) {
 
         const fetchMovieDetails = async () => {
             try {
-                const response = await axios.get(`http://localhost:2003/api/getMovieDetails/${movieId}`);
+                const response = await axios.get(`${import.meta.env.VITE_APP_URL}/api/getMovieDetails/${movieId}`);
                 setMovie(response.data.messsage);
                 setLoading(false);
             } catch (err) {

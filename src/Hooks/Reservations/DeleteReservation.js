@@ -31,7 +31,7 @@ function useDeleteReservation() {
 
     const deleteReservation = async (reservationId) => {
         try {
-            const response = await axios.delete(`http://localhost:2003/api/deleteReservation/${reservationId}`);
+            const response = await axios.delete(`${import.meta.env.VITE_APP_URL}/api/deleteReservation/${reservationId}`);
             if (response.status === 200) {
             setSuccess("Reservations Deleted Successfully.");
             navigate("/home");

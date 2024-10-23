@@ -9,7 +9,7 @@ function SessionDetails({id}) {
     useEffect(() => {
         const getSession = async () => {
             try {
-                const response = await axios.get(`http://localhost:2003/api/getSessionById/${id}`);
+                const response = await axios.get(`${import.meta.env.VITE_APP_URL}/api/getSessionById/${id}`);
                 setSession(response.data.getSessionById);
             } catch (err) {
                 console.log('Error Fetching sessions.', err);

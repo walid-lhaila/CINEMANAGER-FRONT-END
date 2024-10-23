@@ -5,7 +5,7 @@ const useDeleteComment = (movieId, commentId) => {
     const deleteComment = async () => {
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.delete(`http://localhost:2003/api/deleteComment/${movieId}/${commentId}`, {
+            const response = await axios.delete(`${import.meta.env.VITE_APP_URL}/api/deleteComment/${movieId}/${commentId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 },

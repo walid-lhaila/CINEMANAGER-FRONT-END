@@ -16,7 +16,7 @@ function ReserveSeat() {
         }
 
         try {
-            const response = await axios.post('http://localhost:2003/api/reserveSeat', {sessionId, seatNumber, userId}, {
+            const response = await axios.post(`${import.meta.env.VITE_APP_URL}/api/reserveSeat`, {sessionId, seatNumber, userId}, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

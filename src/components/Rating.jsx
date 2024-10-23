@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Rate from "react-rating";
-import useRating from "../Hooks/Rating/useRating.jsx";
+import useRating from "../Hooks/Rating/useRating.js";
 
 function Rating({className, movieId,  userId, onClose}) {
 

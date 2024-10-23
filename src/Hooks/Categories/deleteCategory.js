@@ -6,7 +6,7 @@ function DeleteCategory() {
     const deleteCategory = async (categoryId) => {
         const token = localStorage.getItem("token");
         try {
-            const response = await axios.delete(`http://localhost:2003/api/deleteCategory/${categoryId}`,
+            const response = await axios.delete(`${import.meta.env.VITE_APP_URL}/api/deleteCategory/${categoryId}`,
                 {
                     headers: {
                         Authorization: `bearer ${token}`
