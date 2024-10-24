@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import SidBar from "../../components/Admin/SidBar.jsx";
 import Header from "../../components/Admin/Header.jsx";
 import StatisticsCards from "../../components/Admin/StatisticsCards.jsx";
@@ -7,12 +7,41 @@ import useUsersCount from "../../Hooks/statistics/usersCount.js";
 import useRoomsCount from "../../Hooks/statistics/roomsCount.js";
 import useMovieCount from "../../Hooks/statistics/moviesCount.js";
 import useCategoryCount from "../../Hooks/statistics/categoriesCount.js";
+import useBanUser from "../../Hooks/Users/useBanUser.js";
+
+
 function Dashboard() {
-        const {clients} = getAllClients();
+        const {clients: fetchedClients} = getAllClients();
         const {userCount} = useUsersCount();
         const {roomCount} = useRoomsCount();
         const {movieCount} = useMovieCount();
+        const {banUser} = useBanUser();
         const {categoryCount} = useCategoryCount();
+        const [clients, setClients] = useState([]);
+
+    useEffect(() => {
+        if (fetchedClients) {
+            setClients(fetchedClients);
+        }
+    }, [fetchedClients]);
+
+
+    const handleBanUser = async (userId) => {
+        try {
+            const updatedUser = await banUser(userId);
+            setClients((prevClients) =>
+                prevClients.map((client) =>
+                    client._id === updatedUser.data._id
+                        ? { ...client, banned: updatedUser.data.banned } 
+                        : client
+                )
+            );
+        } catch (error) {
+            console.error("Error banning/unbanning user", error);
+        }
+    };
+
+
 
     return (
             <>
@@ -45,20 +74,31 @@ function Dashboard() {
                                             <td className="py-2 font-medium font-serif border border-gray-300 text-black">{client._id}</td>
                                             <td className="py-2 font-medium font-serif border border-gray-300 text-black">{client.name}</td>
                                             <td className="py-2 font-medium font-serif border border-gray-300 text-black">{client.email}</td>
-                                            <td className="py-2 font-medium font-serif border border-gray-300 text-black">{client.phone}</td>
+                                            <td className="py-2 font-medium font-serif border border-gray-300 text-black">{client.phone ? client.phone : "Aucun"}</td>
                                             <td className="py-2 font-medium font-serif border border-gray-300 text-black">{client.email}</td>
                                             <td className="flex justify-center items-center gap-2 py-1 font-medium font-serif border border-gray-300">
-                                                <div
-                                                    className="bg-red-400 py-1 rounded px-2 cursor-pointer hover:bg-red-500 duration-300 group">
-                                                    <svg className="w-7 h-7 text-red-700 group-hover:text-white duration-300" aria-hidden="true"
-                                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                         fill="none"
-                                                         viewBox="0 0 24 24">
-                                                        <path stroke="currentColor" stroke-linecap="round"
-                                                              stroke-width="2"
-                                                              d="m6 6 12 12m3-6a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                                                    </svg>
-                                                </div>
+                                                {client.banned ? (
+                                                    <div id="unban" onClick={() => handleBanUser(client._id)}
+                                                         className="bg-blue-400 py-1 rounded px-2 cursor-pointer hover:bg-blue-500 duration-300 group">
+                                                        <svg className="w-7 h-7 text-blue-700 group-hover:text-white duration-300" aria-hidden="true"
+                                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                                             viewBox="0 0 24 24">
+                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                                  d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                        </svg>
+                                                    </div>
+                                                ) : (
+                                                    <div id="ban" onClick={() => handleBanUser(client._id)}
+                                                         className="bg-red-400 py-1 rounded px-2 cursor-pointer hover:bg-red-500 duration-300 group">
+                                                        <svg className="w-7 h-7 text-red-700 group-hover:text-white duration-300" aria-hidden="true"
+                                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                                             viewBox="0 0 24 24">
+                                                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                                                                  d="m6 6 12 12m3-6a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                        </svg>
+                                                    </div>
+                                                )}
+
                                             </td>
                                         </tr>
                                     ))}
