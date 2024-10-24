@@ -2,6 +2,8 @@ import React from 'react';
 import walid from "../../assets/walid.png";
 
 function Header() {
+    const currentUser = localStorage.getItem('userName')
+
     return (
         <div className=' w-full h-[80px] bg-white border border-b border-gray-200'>
             <div className=" flex justify-between items-center h-[100%] w-[90%] mx-auto">
@@ -20,7 +22,7 @@ function Header() {
                     <div className='h-[70%] w-[2px] bg-gray-200'></div>
                     <div className='flex justify-center items-center gap-3'>
                         <img className="rounded-full h-14 w-14" src={walid} alt=""/>
-                        <h2 className="font-bold font-serif text-black text-md">Walid Lhaila</h2>
+                        <h2 className="font-bold font-serif text-black text-md">{currentUser}</h2>
                     </div>
                 </div>
 

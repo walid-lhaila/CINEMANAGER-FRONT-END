@@ -49,6 +49,13 @@ function UseSignIn() {
             localStorage.setItem('userId', decodedToken.id);
             const userRole = decodedToken.role;
 
+            localStorage.setItem('userName', decodedToken.name);
+            localStorage.setItem('email', decodedToken.email);
+            localStorage.setItem('phone', decodedToken.phone);
+            localStorage.setItem('image', decodedToken.image);
+
+
+
             if(userRole === 'admin') {
                 console.log('Admin Logged In Successfully ', response.data);
                 navigate('/admin/Dashboard');
