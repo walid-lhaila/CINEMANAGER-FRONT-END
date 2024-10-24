@@ -36,11 +36,14 @@ function NavBar() {
             }
             <nav className="flex justify-center justify-between items-center  text-white px-24">
                 <img className="h-[100px]" src={logo} alt=""/>
-                <ul className="flex justify-center gap-12 items-center font-bold font-serif ">
+                <ul className="flex justify-center gap-8 items-center font-bold font-serif ">
                     <li className="cursor-pointer relative pb-1 hover:before:w-full before:w-0 before:h-[2px] before:bg-white before:absolute before:left-0 before:bottom-0 before:transition-all before:duration-500 hover:text-amber-300 duration-300">
                         <Link to="/home">Movie</Link></li>
                     <li className="cursor-pointer relative pb-1 hover:before:w-full before:w-0 before:h-[2px] before:bg-white before:absolute before:left-0 before:bottom-0 before:transition-all before:duration-500 hover:text-amber-300 duration-300">
                         <Link to="/myReservation">Reservation</Link></li>
+
+                    <li className="cursor-pointer relative pb-1 hover:before:w-full before:w-0 before:h-[2px] before:bg-white before:absolute before:left-0 before:bottom-0 before:transition-all before:duration-500 hover:text-amber-300 duration-300">
+                        <Link to="/myFavorie">Favorie</Link></li>
                 </ul>
 
 
@@ -48,7 +51,7 @@ function NavBar() {
                     <div className="flex items-center gap-5">
                         <h1 className="text-white font-medium font-serif text-xl">{currentClient}</h1>
                         <button onClick={togglePopup} className="focus:outline-none">
-                            <svg className="w-8 h-8 text-white hover:text-amber-300 duration-300"
+                        <svg className="w-8 h-8 text-white hover:text-amber-300 duration-300"
                                  aria-hidden="true"
                                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                  viewBox="0 0 24 24">

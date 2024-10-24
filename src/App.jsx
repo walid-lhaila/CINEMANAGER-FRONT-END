@@ -14,8 +14,8 @@ import NewPassword from "./Pages/Auth/NewPassword.jsx";
 import Categories from "./Pages/Admin/Categories.jsx";
 import Movies from "./Pages/Admin/Movies.jsx";
 import Rooms from "./Pages/Admin/Rooms.jsx";
+import Favorie from "./Pages/Home/Favorie.jsx";
 import Sessions from "./Pages/Admin/Session.jsx";
-import UserInfo from "./Pages/Home/UserInfo.jsx";
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import './toast.css';
@@ -38,7 +38,7 @@ function App() {
               <Route path="/movieDetails/:id" element={<MovieDetails />} />
               <Route path="/reservation" element={<Reservation />} />
               <Route path="/myReservation" element={<MyReservation />} />
-              <Route path="/user-info" element={<UserInfo />} />
+              <Route path="/myFavorie" element={<Favorie />} />
 
 
               <Route path="/admin/Dashboard" element={<Dashboard />} />
