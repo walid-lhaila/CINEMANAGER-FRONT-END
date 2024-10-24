@@ -8,12 +8,13 @@ import useGetSessions from "../../Hooks/Session/GetSession.js";
 
 function Session() {
     const [showForm, setShowForm] = useState(false);
-    const {sessions} = useGetSessions();
+    const {sessions, setSessions} = useGetSessions([]);
+
 
     return (
         <div className="flex bg-white">
             {showForm &&
-                <SessionForm removeForm={() => setShowForm(false)} />
+                <SessionForm removeForm={() => setShowForm(false)} setSessions={setSessions} />
             }
             <SidBar/>
             <div className="w-full">

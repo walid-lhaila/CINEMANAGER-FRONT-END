@@ -21,6 +21,7 @@ function GetSession() {
         }, []);
     return {
         sessions,
+        setSessions,
         error
     };
 }

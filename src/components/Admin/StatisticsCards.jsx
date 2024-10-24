@@ -1,6 +1,6 @@
 import React from 'react';
 
-function StatistiqueCards({title, number, svg}) {
+function StatisticsCards({title, number, svg}) {
     return (
         <div
             className="bg-gradient-to-r from-amber-400  shadow-xl shadow-gray-700/10 to-white  rounded-lg w-[24%] border-gray-300 border">
@@ -20,4 +20,4 @@ function StatistiqueCards({title, number, svg}) {
     ;
 }
 
-export default StatistiqueCards;
+export default StatisticsCards;
