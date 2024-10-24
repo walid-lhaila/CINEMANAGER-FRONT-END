@@ -48,7 +48,7 @@ function UseSignIn() {
             const decodedToken = jwtDecode(token);
             localStorage.setItem('userId', decodedToken.id);
             const userRole = decodedToken.role;
-
+            localStorage.setItem('role', decodedToken.role);
             localStorage.setItem('userName', decodedToken.name);
             localStorage.setItem('email', decodedToken.email);
             localStorage.setItem('phone', decodedToken.phone);

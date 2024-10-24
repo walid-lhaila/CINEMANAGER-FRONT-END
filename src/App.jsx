@@ -17,6 +17,7 @@ import Rooms from "./Pages/Admin/Rooms.jsx";
 import Favorie from "./Pages/Home/Favorie.jsx";
 import Sessions from "./Pages/Admin/Session.jsx";
 import {ToastContainer} from "react-toastify";
+import ProtectedRoute from "./Hooks/Auth/ProtectedRoute.jsx";
 import 'react-toastify/dist/ReactToastify.css';
 import './toast.css';
 
@@ -33,19 +34,86 @@ function App() {
               <Route path="/signup" element={<SignUp />} />
               <Route path="/UseForgetPassword" element={<ForgetPassword />} />
               <Route path="/NewPassword/:token" element={<NewPassword />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/sessionDetails/:id" element={<SessionDetails />} />
-              <Route path="/movieDetails/:id" element={<MovieDetails />} />
-              <Route path="/reservation" element={<Reservation />} />
-              <Route path="/myReservation" element={<MyReservation />} />
-              <Route path="/myFavorie" element={<Favorie />} />
+                <Route
+                    path="/home"
+                    element={
+                        <ProtectedRoute allowedRoles={["client"]}>
+                            <Home />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/sessionDetails/:id"
+                    element={
+                        <ProtectedRoute allowedRoles={["client"]}>
+                            <SessionDetails />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/movieDetails/:id"
+                    element={
+                        <ProtectedRoute allowedRoles={["client"]}>
+                            <MovieDetails />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/reservation"
+                    element={
+                        <ProtectedRoute allowedRoles={["client"]}>
+                            <Reservation />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/myReservation"
+                    element={
+                        <ProtectedRoute allowedRoles={["client"]}>
+                            <MyReservation />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/myFavorie"
+                    element={
+                        <ProtectedRoute allowedRoles={["client"]}>
+                            <Favorie />
+                        </ProtectedRoute>
+                    }
+                />
 
 
-              <Route path="/admin/Dashboard" element={<Dashboard />} />
-              <Route path="/admin/addCategory" element={<Categories />} />
-              <Route path="/admin/movies" element={<Movies />} />
-              <Route path="/admin/rooms" element={<Rooms />} />
-              <Route path="/admin/sessions" element={<Sessions />} />
+                <Route path="/admin/dashboard" element={
+                        <ProtectedRoute allowedRoles={["admin"]}>
+                            <Dashboard />
+                        </ProtectedRoute>
+                }
+                />
+                <Route path="/admin/addCategory" element={
+                        <ProtectedRoute allowedRoles={["admin"]}>
+                            <Categories />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route path="/admin/movies" element={
+                        <ProtectedRoute allowedRoles={["admin"]}>
+                            <Movies />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route path="/admin/rooms" element={
+                        <ProtectedRoute allowedRoles={["admin"]}>
+                            <Rooms />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route path="/admin/sessions" element={
+                        <ProtectedRoute allowedRoles={["admin"]}>
+                            <Sessions />
+                        </ProtectedRoute>
+                    }
+                />
           </Routes>
         </div>
   );

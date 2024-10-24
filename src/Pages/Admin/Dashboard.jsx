@@ -45,7 +45,7 @@ function Dashboard() {
                                             <td className="py-2 font-medium font-serif border border-gray-300 text-black">{client._id}</td>
                                             <td className="py-2 font-medium font-serif border border-gray-300 text-black">{client.name}</td>
                                             <td className="py-2 font-medium font-serif border border-gray-300 text-black">{client.email}</td>
-                                            <td className="py-2 font-medium font-serif border border-gray-300 text-black">{client.name}</td>
+                                            <td className="py-2 font-medium font-serif border border-gray-300 text-black">{client.phone}</td>
                                             <td className="py-2 font-medium font-serif border border-gray-300 text-black">{client.email}</td>
                                             <td className="flex justify-center items-center gap-2 py-1 font-medium font-serif border border-gray-300">
                                                 <div
