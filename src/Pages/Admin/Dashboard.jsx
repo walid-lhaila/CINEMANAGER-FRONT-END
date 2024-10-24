@@ -32,7 +32,7 @@ function Dashboard() {
             setClients((prevClients) =>
                 prevClients.map((client) =>
                     client._id === updatedUser.data._id
-                        ? { ...client, banned: updatedUser.data.banned } 
+                        ? { ...client, banned: updatedUser.data.banned }
                         : client
                 )
             );

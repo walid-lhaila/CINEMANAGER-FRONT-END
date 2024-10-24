@@ -20,8 +20,8 @@ function Header() {
 
                 <div className="flex justify-center items-center gap-10 h-20">
                     <div className='h-[70%] w-[2px] bg-gray-200'></div>
+                    
                     <div className='flex justify-center items-center gap-3'>
-                        <img className="rounded-full h-14 w-14" src={walid} alt=""/>
                         <h2 className="font-bold font-serif text-black text-md">{currentUser}</h2>
                     </div>
                 </div>
